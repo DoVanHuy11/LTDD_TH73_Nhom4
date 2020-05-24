@@ -4,9 +4,9 @@
     <string name="product">product</string>
     <string name="prd1">Daddy Shirt</string>
     <string name="prd2">Barbed Wire Shirt</string>
-    <string name="prd7">"Warning LongSleeve Đen"</string>
-    <string name="prd5">"Warning Tee Trắng"</string>
+    <string name="prd7">"Warning Long Sleeve"</string>
+    <string name="prd5">"Warning Tee Đen"</string>
     <string name="prd4">Color Block Tee</string>
     <string name="prd6">Rat TShirt - RTS</string>
-    <string name="prd8">Xoài Magic TShirt Trắng</string>
+    <string name="prd8">Xoài Magic TShirt</string>
 </resources>
