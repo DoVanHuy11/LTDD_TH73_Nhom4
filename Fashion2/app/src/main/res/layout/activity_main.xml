@@ -47,7 +47,6 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/alegreya_sc_bold"
                 android:gravity="center"
                 android:includeFontPadding="true"
                 android:layout_margin="10dp"
@@ -77,7 +76,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/tshirt43"
+                        app:srcCompat="@drawable/img2"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:contentDescription="@string/product"/>
