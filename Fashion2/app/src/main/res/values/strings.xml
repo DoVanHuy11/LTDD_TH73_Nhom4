@@ -1,25 +1,3 @@
 <resources>
     <string name="app_name">Fashion</string>
-<<<<<<< HEAD
-    <string name="string_productName">T-shirt Stockholm Ancient DJ</string>
-    <string name="string_productPrice">350,000đ</string>
-    <string name="string_sizeS">Nhỏ</string>
-    <string name="string_sizeM">Trung</string>
-    <string name="string_sizeB">Lớn</string>
-    <string name="string_btnAddCart">Thêm vào giỏ hàng</string>
-    <string name="string_btnAdd">+</string>
-    <string name="string_btnMinus">-</string>
-    <string name="content">product image</string>
-    <string name="string_describePDetail">100% Cotton, Organic and Fairtrade-certified</string>
-=======
-    <string name="introduce">introduce</string>
-    <string name="product">product</string>
-    <string name="prd1">Daddy Shirt</string>
-    <string name="prd2">Barbed Wire Shirt</string>
-    <string name="prd7">"Warning Long Sleeve"</string>
-    <string name="prd5">"Warning Tee Đen"</string>
-    <string name="prd4">Color Block Tee</string>
-    <string name="prd6">Rat TShirt - RTS</string>
-    <string name="prd8">Xoài Magic TShirt</string>
->>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
 </resources>
