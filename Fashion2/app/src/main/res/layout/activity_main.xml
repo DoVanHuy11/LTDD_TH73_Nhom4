@@ -8,7 +8,10 @@
     tools:context=".MainActivity">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -189,6 +192,9 @@
         </LinearLayout>
 
     </ScrollView>
+<<<<<<< HEAD
+>>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
+=======
 >>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
 
 </androidx.constraintlayout.widget.ConstraintLayout>

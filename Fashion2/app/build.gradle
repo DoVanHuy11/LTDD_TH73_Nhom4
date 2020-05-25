@@ -32,7 +32,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 <<<<<<< HEAD
+<<<<<<< HEAD
     implementation 'com.google.android.material:material:1.1.0'
+=======
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+>>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
 =======
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
 >>>>>>> 62c15d0022cc733f274a535f6e2d27c7169ba65d
