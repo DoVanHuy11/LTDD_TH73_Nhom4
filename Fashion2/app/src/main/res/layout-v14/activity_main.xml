@@ -6,196 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/LL1"
-        tools:ignore="MissingConstraints">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="InvalidId,MissingConstraints"
+    android:id="@+id/LL1">
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="190dp"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/img1"
-        android:contentDescription="@string/introduce" />
+        android:contentDescription="@string/introduce"
+        android:layout_marginBottom="10dp"
+        tools:ignore="MissingConstraints" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="5dp" />
-
-    </LinearLayout>
-
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        tools:layout_editor_absoluteX="0dp"-->
-<!--        tools:layout_editor_absoluteY="1dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/LL1"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        android:layout_height="0dp">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical" >-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:fontFamily="casual"-->
-<!--                android:gravity="center"-->
-<!--                android:includeFontPadding="true"-->
-<!--                android:text="NEW COLLECTION"-->
-<!--                android:textColor="@color/colorPrimary"-->
-<!--                android:textSize="25sp"-->
-<!--                android:textStyle="bold"-->
-<!--                tools:ignore="HardcodedText" />-->
-<!--            <Space-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="10dp" />-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_marginTop="0dp"-->
-<!--                android:layout_marginBottom="20dp">-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/LL2"-->
-<!--                    android:orientation="vertical">-->
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView1"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img2"-->
-<!--                        android:layout_marginLeft="20dp"-->
-<!--                        android:layout_marginRight="20dp"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd1"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-<!--                    <Space-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="20dp"/>-->
-<!--                    <ImageView-->
-<!--                        android:id="@+id/img3"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img3"-->
-<!--                        android:layout_marginLeft="20dp"-->
-<!--                        android:layout_marginRight="20dp"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd5"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-
-<!--                    <Space-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="20dp"/>-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView4"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img4"-->
-<!--                        android:layout_marginLeft="20dp"-->
-<!--                        android:layout_marginRight="20dp"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd6"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/LL3"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_marginEnd="20dp">-->
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView5"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img5"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd2"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-<!--                    <Space-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="20dp"/>-->
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView6"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img6"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd4"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-
-<!--                    <Space-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="20dp"/>-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView7"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        app:srcCompat="@drawable/img7"-->
-<!--                        android:contentDescription="@string/product"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/prd7"-->
-<!--                        android:gravity="center">-->
-<!--                    </TextView>-->
-
-<!--                </LinearLayout>-->
-
-<!--            </LinearLayout>-->
-
-<!--        </LinearLayout>-->
-
-<!--    </ScrollView>-->
-
-    <GridView
-        android:id="@+id/listview"
-        app:layout_constraintTop_toBottomOf="@id/LL1"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="7dp"
         tools:ignore="MissingConstraints"
-        android:numColumns="2">
+        app:layout_constraintTop_toBottomOf="@id/imageView">
+    </Space>
+</LinearLayout>
 
-    </GridView>
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LL1"
+        tools:ignore="MissingConstraints">
+    </ListView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
