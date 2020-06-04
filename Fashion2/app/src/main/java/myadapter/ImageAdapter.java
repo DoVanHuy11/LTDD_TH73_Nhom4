@@ -30,6 +30,8 @@ public class ImageAdapter extends PagerAdapter {
             R.drawable.img1,
             R.drawable.img1_1,
             R.drawable.img1_2,
+            R.drawable.img1_3,
+            R.drawable.img1_4,
     };
 
     @Override

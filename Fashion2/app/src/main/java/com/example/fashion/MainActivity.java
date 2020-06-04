@@ -6,12 +6,11 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -22,6 +21,7 @@ import myadapter.ImageAdapter;
 import myadapter.ProductAdapter;
 
 public class MainActivity extends AppCompatActivity {
+
 
     ///
     int currentPage = 0;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
             public void run() {
-                if (currentPage == 3) {
+                if (currentPage == 5) {
                     currentPage = 0;
                 }
                 mViewPager.setCurrentItem(currentPage++, true);
