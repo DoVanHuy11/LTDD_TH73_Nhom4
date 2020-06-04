@@ -10,23 +10,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="InvalidId,MissingConstraints"
-    android:id="@+id/LL1">
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="190dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/img1"
-        android:contentDescription="@string/introduce"
-        android:layout_marginBottom="10dp"
-        tools:ignore="MissingConstraints" />
+    android:id="@+id/LL1"
+    android:orientation="horizontal">
 
-    <Space
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="7dp"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toBottomOf="@id/imageView">
-    </Space>
+        android:layout_height="190dp"
+        android:id="@+id/viewPager"
+        android:layout_marginBottom="10dp">
+    </androidx.viewpager.widget.ViewPager>
+
 </LinearLayout>
 
     <ListView
