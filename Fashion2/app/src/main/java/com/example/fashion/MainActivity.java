@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -22,7 +24,7 @@ import myadapter.ProductAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private ListView listView;
     ///
     int currentPage = 0;
     Timer timer;
@@ -32,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     private ListView listProduct;
     Button btnAdd;
     String[] maintitle={
-            "Daddy Shirt", "Barbed Wire Shirt", "Warning Sleeve", "Warning Tee Đen",  "Color Block Tee", "Rat TShirt - RTS"
+            "T-shirt Stockholm Ancient DJ", "Barbed Wire Shirt", "Warning Sleeve", "Warning Tee Đen",  "Color Block Tee", "Rat TShirt - RTS"
     };
 
     String[] subtitle={
-            "357.000", "439.000", "365.000",  "512.000", "355.000", "455.000",
+            "350.000", "439.000", "365.000",  "512.000", "355.000", "455.000",
     };
 
     Integer[] imgId={
-            R.drawable.img2, R.drawable.img3, R.drawable.img4,
+            R.drawable.tshirt41, R.drawable.img3, R.drawable.img4,
             R.drawable.img5, R.drawable.img6, R.drawable.img7,
     };
 
@@ -78,8 +80,29 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(Update);
             }
         }, DELAY_MS, PERIOD_MS);
+
+        listView = (ListView) findViewById(R.id.listview);
+        CatchOnItemListView();
+
+
     }
 
+    private void CatchOnItemListView() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Intent intent1 = new Intent(MainActivity.this, ProductDetailActivity.class);
+                        startActivity(intent1);
+                }
+            }
+        });
+    }
 
 
     @Override
@@ -92,9 +115,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.idcart)
-        {
-            Intent cart = new Intent(this,GioHang.class);
+        if(id == R.id.idcart) {
+            Intent cart = new Intent(this, GioHang.class);
             startActivity(cart);
             return true;
         }

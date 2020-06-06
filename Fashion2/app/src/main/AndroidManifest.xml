@@ -13,6 +13,7 @@
         <activity android:name=".GioHang"/>
         <activity android:name=".SubscribeActivity" />
         <activity android:name=".Loading" />
+        <activity android:name=".ProductDetailActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
