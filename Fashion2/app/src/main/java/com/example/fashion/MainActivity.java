@@ -91,14 +91,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0:
-                        Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 1:
-                        Intent intent1 = new Intent(MainActivity.this, ProductDetailActivity.class);
-                        startActivity(intent1);
+                for(position = 0; position <= listView.getCount(); position++){
+                    Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
+                    startActivity(intent);
+                    break;
                 }
             }
         });
