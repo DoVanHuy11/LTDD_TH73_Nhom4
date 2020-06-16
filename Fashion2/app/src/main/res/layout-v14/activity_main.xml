@@ -1,34 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:ignore="InvalidId,MissingConstraints"
-    android:id="@+id/LL1"
-    android:orientation="horizontal">
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout_Main"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:id="@+id/viewPager"
-        android:layout_marginBottom="10dp">
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="InvalidId,MissingConstraints"
+            android:id="@+id/LL1"
+            android:orientation="vertical">
 
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:id="@+id/viewPager"
+                android:layout_marginBottom="10dp"/>
+            <ListView
+                android:id="@+id/listProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LL1"
+                tools:ignore="MissingConstraints">
+            </ListView>
+        </LinearLayout>
+
+        <androidx.drawerlayout.widget.DrawerLayout
+
+            android:id="@+id/navigation_view_main"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity = "start"
+            tools:ignore="MissingClass">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                    <ImageView
+                        android:id="@+id/activity_main_imv_avatar"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:paddingTop="10dp"
+                        app:srcCompat="@drawable/logo" />
+
+                    <TextView
+                        android:id="@+id/activity_main_tv_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="DeGrey SHOP"
+                        android:textSize="25dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                    <TextView
+                        android:id="@+id/activity_main_tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="www.degreyshop.com.vn" />
+
+                </LinearLayout>
+
+
+                <!-- Item Ao -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_ao"
+                        android:scaleType="centerCrop"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:textSize="20dp"
+                        android:text="SHIRT" />
+
+                </LinearLayout>
+
+                <!-- Item Quan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_quan" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20dp"
+                        android:text="PANTS" />
+
+                </LinearLayout>
+
+                <!-- Item Phu Kien -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_pk" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20dp"
+                        android:text="ACCESSORIES" />
+
+                </LinearLayout>
 </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LL1"
-        tools:ignore="MissingConstraints">
-    </ListView>
+            <ListView
+                android:id="@+id/listView_Menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.drawerlayout.widget.DrawerLayout>
+<!--        </com.google.android.material.navigation.NavigationView>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ProductAdapter adapter = new ProductAdapter(this , maintitle, subtitle, imgId);
-        listProduct = (ListView) findViewById(R.id.listview);
+        listProduct = (ListView) findViewById(R.id.listProduct);
         listProduct.setAdapter(adapter);
 
         //////////////
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-        listView = (ListView) findViewById(R.id.listview);
+        listView = (ListView) findViewById(R.id.listProduct);
         CatchOnItemListView();
 
         AnhXa();
