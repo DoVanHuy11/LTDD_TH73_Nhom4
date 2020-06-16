@@ -50,5 +50,4 @@ public class ProductDetail_ImageAdapter extends PagerAdapter {
         return sliderImageId.length;
     }
 
-
 }

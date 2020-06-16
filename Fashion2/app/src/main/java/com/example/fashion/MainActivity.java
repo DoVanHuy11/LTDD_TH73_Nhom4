@@ -16,13 +16,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import model.Cart;
 import myadapter.ImageAdapter;
 import myadapter.ProductAdapter;
 
 public class MainActivity extends AppCompatActivity {
+    public static ArrayList<Cart> arrayCart;
 
     private ListView listView;
     ///
@@ -84,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         CatchOnItemListView();
 
-
+        AnhXa();
     }
+
 
     private void CatchOnItemListView() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,6 +104,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //lấy và đưa dữ liệu vào mảng
+    private void AnhXa() {
+        if(arrayCart != null){
+
+        }else {
+            arrayCart = new ArrayList<>();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,7 +130,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }
