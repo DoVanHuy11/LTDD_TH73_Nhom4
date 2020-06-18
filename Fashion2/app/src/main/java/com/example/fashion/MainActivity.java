@@ -28,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Cart> arrayCart;
 
     private ListView listView;
+    private ListView listView_nav;
+
+    String[] navtitle ={
+            "SẢN PHẨM", "GIỚI THIỆU", "HƯỚNG DẪN",
+    };
+
+    Integer[] navic = {
+            R.drawable.ic_ao,
+            R.drawable.ic_about,
+            R.drawable.ic_how,
+    };
     ///
     int currentPage = 0;
     Timer timer;
@@ -59,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
         listProduct = (ListView) findViewById(R.id.listProduct);
         listProduct.setAdapter(adapter);
 
-        //////////////
+   //////////////////////////
+
+        listView_navigation adapter_nav = new listView_navigation(this , navtitle, navic);
+        listView_nav = (ListView) findViewById(R.id.listView_nav);
+        listView_nav.setAdapter(adapter_nav);
 
         final ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
         ImageAdapter adapter1 = new ImageAdapter(this );
@@ -89,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
         AnhXa();
     }
-
 
     private void CatchOnItemListView() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.fashion.MainActivity;
 import com.example.fashion.R;
 
 public class ProductAdapter extends ArrayAdapter<String> {

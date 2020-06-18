@@ -5,11 +5,9 @@
     android:layout_width="wrap_content"
     android:orientation="vertical"
     android:gravity="center">
-<Space
-    android:layout_width="match_parent"
-    android:layout_height="10dp">
-</Space>
+
     <ImageView
+        android:paddingTop="10dp"
         android:id="@+id/product_img"
         android:layout_width="170dp"
         android:layout_height="170dp"

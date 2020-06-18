@@ -11,7 +11,7 @@
         android:orientation="vertical"
         tools:ignore="ExtraText"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="20dp">
 
         <ImageView
             android:layout_width="150dp"
