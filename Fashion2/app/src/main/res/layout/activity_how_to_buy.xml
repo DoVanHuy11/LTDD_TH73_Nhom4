@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".howToBuy">
+
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        tools:ignore="ExtraText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/huongDanMua"
+            tools:ignore="MissingConstraints"
+            android:paddingTop="30dp"
+            android:paddingBottom="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hd1"
+            android:textSize="15sp"
+            tools:ignore="SmallSp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hd2"
+            android:textSize="15sp"
+            tools:ignore="SmallSp"
+            android:textColor="@color/colorPrimary"
+            android:paddingBottom="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hd3"
+            android:textSize="15sp"
+            tools:ignore="SmallSp"
+            android:textColor="@color/colorPrimary"
+            android:paddingBottom="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hd4"
+            android:textSize="15sp"
+            tools:ignore="SmallSp"
+            android:textColor="@color/colorPrimary"
+            android:paddingBottom="5dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

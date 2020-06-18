@@ -19,6 +19,14 @@
             android:id="@+id/LL1"
             android:orientation="vertical">
 
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolBar_Main"-->
+<!--                android:background="@color/colorPrimaryDark"-->
+<!--                app:title="Trang chủ"-->
+<!--                app:titleTextColor="#FFFFFF"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize">-->
+<!--            </androidx.appcompat.widget.Toolbar>-->
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
@@ -46,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="left">
 
                 <!-- Header -->
                 <LinearLayout
@@ -86,7 +95,7 @@
                 </LinearLayout>
 
 
-                <!-- Item Ao -->
+                <!-- Item San Pham -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,7 +105,8 @@
                     android:orientation="horizontal"
                     android:paddingLeft="20dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:layout_width="50dp"
@@ -107,13 +117,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="20dp"
                         android:textSize="20dp"
-                        android:text="SHIRT" />
+                        android:textColor="@color/colorPrimary"
+                        android:text="SẢN PHẨM" />
 
                 </LinearLayout>
 
-                <!-- Item Quan -->
+                <!-- Item Gioi Thieu -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,18 +139,19 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_quan" />
+                        android:src="@drawable/ic_about" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="20dp"
-                        android:text="PANTS" />
+                        android:text="GIỚI THIỆU" />
 
                 </LinearLayout>
 
-                <!-- Item Phu Kien -->
+                <!-- Item Huong Dan Mua Hang -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,19 +161,21 @@
                     android:paddingTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    tools:ignore="ExtraText">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_pk" />
+                        android:src="@drawable/ic_how" />
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:textColor="@color/colorPrimary"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:textSize="20dp"
-                        android:text="ACCESSORIES" />
+                        android:text="HƯỚNG DẪN MUA HÀNG" />
 
                 </LinearLayout>
 </LinearLayout>
