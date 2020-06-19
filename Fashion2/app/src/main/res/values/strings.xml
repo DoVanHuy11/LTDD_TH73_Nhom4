@@ -23,5 +23,36 @@
     <string name="prd6">Rat TShirt - RTS</string>
     <string name="prd8">Xoài Magic TShirt</string>
 
+    <string name="about1">Thành lập từ năm 2016 và được nhiều bạn trẻ biết đến qua những mẫu áo truyền thông, Degrey hiện đang từng bước khẳng định vị trí của mình trong bản đồ streetwear Việt Nam. Những mẫu thiết kế đến từ Degrey luôn mang cho người mặc hết từ ngạc nhiên này đến bất ngờ khác nhờ vào sự kết hợp hài hòa, tinh tế giữa những chất liệu cổ truyền như gấm, tơ tằm, nhung… với những kiểu thiết kế đầy phá cách và hiện đại.</string>
+    <string name="about2">Facebook: facebook.com/degrey.saigon</string>
+    <string name="about3">Instagram: instagram.com/degrey.saigon</string>
+    <string name="about4">Cửa hàng: 315 CMTT, p.3, q. Tân Bình, tp.HCM</string>
+    <string name="about5">Hotline: 0336311117</string>
+
+    <string name="gioithieu">Giới thiệu</string>
+    <string name="gioithieu2">Cửa hàng</string>
+    <string name="huongDanMua">Hướng dẫn mua hàng</string>
+
+    <string name="hd1">Các bạn lưu ý: Khi mua hàng qua web thành công, tụi mình sẽ liên hệ với các bạn qua số điện thoại để tiến hành xác nhận đơn hàng và vận chuyển.</string>
+    <string name="hd2">Mọi đơn hàng sẽ bị huỷ và thông báo qua mail nếu gọi quá 3 lần không nhấc máy hoặc người nghe từ chối cuộc gọi.</string>
+    <string name="hd3">Các bạn có thể liên hệ hotline: 0931 409 415</string>
+    <string name="hd4">Cám ơn các bạn đã mua hàng tại Degrey.</string>
+
+    <string-array name="mainTitle">
+        <item>T-shirt Stockholm Ancient DJ</item>
+        <item>Barbed Wire Shirt</item>
+        <item>Warning Sleeve</item>
+        <item>Warning Tee Đen</item>
+        <item>Color Block Tee</item>
+        <item>Rat TShirt - RTS</item>
+    </string-array>
+    <string-array name="subtitle">
+        <item>350.000</item>
+        <item>439.000</item>
+        <item>365.000</item>
+        <item>512.000</item>
+        <item>355.000</item>
+        <item>455.000</item>
+    </string-array>
 
 </resources>

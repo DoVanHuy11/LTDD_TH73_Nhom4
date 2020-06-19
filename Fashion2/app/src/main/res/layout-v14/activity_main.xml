@@ -1,34 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:ignore="InvalidId,MissingConstraints"
-    android:id="@+id/LL1"
-    android:orientation="horizontal">
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout_Main"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:id="@+id/viewPager"
-        android:layout_marginBottom="10dp">
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="InvalidId,MissingConstraints"
+            android:id="@+id/LL1"
+            android:orientation="vertical"
+            style="@style/ThemeOverlay.AppCompat.Light">
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolBar_Main"-->
+<!--                android:background="@color/colorPrimaryDark"-->
+<!--                app:title="Trang chủ"-->
+<!--                app:titleTextColor="#FFFFFF"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize">-->
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:id="@+id/viewPager"
+                android:layout_marginBottom="10dp"/>
+            <ListView
+                android:id="@+id/listProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LL1"
+                tools:ignore="MissingConstraints"
+                android:dividerHeight="0dp"
+                android:divider="@null">
+            </ListView>
+        </LinearLayout>
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/navigation_view_main"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity = "start"
+            tools:ignore="MissingClass">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff">
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:id="@+id/nav1"
+                android:background="#000000"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    app:srcCompat="@drawable/logo" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DeGrey SHOP"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="www.degreyshop.com.vn"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <ListView
+                android:layout_marginTop="30dp"
+                android:id="@+id/listView_nav"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/nav1"
+                android:dividerHeight="0dp"
+                android:divider="@null">
+            </ListView>
+        </LinearLayout>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </LinearLayout>
-
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LL1"
-        tools:ignore="MissingConstraints">
-    </ListView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,15 +16,29 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import model.Cart;
 import myadapter.ImageAdapter;
 import myadapter.ProductAdapter;
 
 public class MainActivity extends AppCompatActivity {
+    public static ArrayList<Cart> arrayCart;
 
     private ListView listView;
+    private ListView listView_nav;
+
+    String[] navtitle ={
+            "SẢN PHẨM", "GIỚI THIỆU", "HƯỚNG DẪN",
+    };
+
+    Integer[] navic = {
+            R.drawable.ic_ao,
+            R.drawable.ic_about,
+            R.drawable.ic_how,
+    };
     ///
     int currentPage = 0;
     Timer timer;
@@ -53,10 +67,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ProductAdapter adapter = new ProductAdapter(this , maintitle, subtitle, imgId);
-        listProduct = (ListView) findViewById(R.id.listview);
+        listProduct = (ListView) findViewById(R.id.listProduct);
         listProduct.setAdapter(adapter);
 
-        //////////////
+   //////////////////////////
+
+        listView_navigation adapter_nav = new listView_navigation(this , navtitle, navic);
+        listView_nav = (ListView) findViewById(R.id.listView_nav);
+        listView_nav.setAdapter(adapter_nav);
 
         final ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
         ImageAdapter adapter1 = new ImageAdapter(this );
@@ -81,10 +99,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-        listView = (ListView) findViewById(R.id.listview);
+        listView = (ListView) findViewById(R.id.listProduct);
         CatchOnItemListView();
+        CatchOnItemListView2();
 
-
+        AnhXa();
     }
 
     private void CatchOnItemListView() {
@@ -100,6 +119,35 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void CatchOnItemListView2() {
+        listView_nav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent[] intent = new Intent[3];
+                intent[0] = new Intent(MainActivity.this, Product_Layout.class);
+                intent[1] = new Intent(MainActivity.this, About.class);
+                intent[2] = new Intent(MainActivity.this, howToBuy.class);
+
+                if (position==0)
+                    startActivity(intent[0]);
+
+                else if (position==1)
+                        startActivity(intent[1]);
+
+                else if (position==2)
+                      startActivity(intent[2]);
+            }
+        });
+    }
+
+    //lấy và đưa dữ liệu vào mảng
+    private void AnhXa() {
+        if(arrayCart != null){
+
+        }else {
+            arrayCart = new ArrayList<>();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,7 +166,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Product_Layout">
+
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SẢN PHẨM (activity tạm thời)"
+            android:textSize="23sp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_margin="5dp"/>
+          <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LL2"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img2"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd1"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">
+                    </TextView>
+                     
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img3"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd5"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img4"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd6"
+                        android:gravity="center">
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LL3"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp">
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img5"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd2"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img6"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd4"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/img7"
+                        android:contentDescription="@string/product"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prd7"
+                        android:gravity="center">
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
