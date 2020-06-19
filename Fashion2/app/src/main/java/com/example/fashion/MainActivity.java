@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent[] intent = new Intent[3];
-                intent[0] = new Intent(MainActivity.this, ProductDetailActivity.class);
+                intent[0] = new Intent(MainActivity.this, Product_Layout.class);
                 intent[1] = new Intent(MainActivity.this, About.class);
                 intent[2] = new Intent(MainActivity.this, howToBuy.class);
 

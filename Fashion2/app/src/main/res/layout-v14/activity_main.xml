@@ -48,7 +48,7 @@
 
         <androidx.drawerlayout.widget.DrawerLayout
             android:id="@+id/navigation_view_main"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity = "start"
             tools:ignore="MissingClass">
