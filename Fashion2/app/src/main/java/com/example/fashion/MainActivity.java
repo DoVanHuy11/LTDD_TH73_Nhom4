@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listProduct);
         CatchOnItemListView();
+        CatchOnItemListView2();
 
         AnhXa();
     }
@@ -114,6 +115,27 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 }
+            }
+        });
+    }
+
+    private void CatchOnItemListView2() {
+        listView_nav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent[] intent = new Intent[3];
+                intent[0] = new Intent(MainActivity.this, ProductDetailActivity.class);
+                intent[1] = new Intent(MainActivity.this, About.class);
+                intent[2] = new Intent(MainActivity.this, howToBuy.class);
+
+                if (position==0)
+                    startActivity(intent[0]);
+
+                else if (position==1)
+                        startActivity(intent[1]);
+
+                else if (position==2)
+                      startActivity(intent[2]);
             }
         });
     }
