@@ -63,7 +63,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, maintitle, subtitle, imgid);
-        listProductDetail = (ListView)findViewById(R.id.listProductDetail);
         listProductDetail.setAdapter(adapter2);
     }
 
@@ -87,7 +86,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void getValues(){
         spinner = (Spinner) findViewById(R.id.spinner);
         btnAddCart0 = (Button) findViewById(R.id.btnAddCart0);
-        btnAddCart1 = (Button) findViewById(R.id.btnAddCart1);
         listProductDetail = (ListView) findViewById(R.id.listProductDetail);
     }
 
@@ -97,13 +95,6 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
             }});
-
-        btnAddCart1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void SetFocusForListView(){
