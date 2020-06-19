@@ -17,6 +17,7 @@ public class Product_Layout extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Sản phẩm");
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

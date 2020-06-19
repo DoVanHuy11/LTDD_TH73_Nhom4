@@ -17,6 +17,7 @@ public class howToBuy extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Hướng dẫn mua hàng");
 
     }
 

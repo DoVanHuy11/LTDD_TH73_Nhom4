@@ -17,7 +17,7 @@ public class About extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        actionBar.setTitle("Giới thiệu");
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
