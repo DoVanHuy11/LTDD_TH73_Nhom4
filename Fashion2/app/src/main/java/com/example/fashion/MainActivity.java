@@ -103,7 +103,13 @@ public class MainActivity extends AppCompatActivity {
         CatchOnItemListView();
         CatchOnItemListView2();
 
-        AnhXa();
+        //lấy và đưa dữ liệu vào mảng
+        if(arrayCart != null){
+
+        }else {
+            arrayCart = new ArrayList<>();
+        }
+
     }
 
     private void CatchOnItemListView() {
@@ -140,14 +146,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //lấy và đưa dữ liệu vào mảng
-    private void AnhXa() {
-        if(arrayCart != null){
 
-        }else {
-            arrayCart = new ArrayList<>();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

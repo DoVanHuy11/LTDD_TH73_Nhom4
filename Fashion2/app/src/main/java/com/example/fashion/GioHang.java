@@ -4,15 +4,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -23,7 +26,7 @@ public class GioHang extends AppCompatActivity {
     ListView listCart;
     static TextView txtTotal;
     ImageView imgEmptycart;
-    Button btnMuahang;
+    Button btnmuahang;
     ProductCart productCart;
 
     @Override
@@ -40,15 +43,64 @@ public class GioHang extends AppCompatActivity {
         ////
         listCart = (ListView) findViewById(R.id.listproduct);
         txtTotal = (TextView) findViewById(R.id.total);
-        btnMuahang = (Button) findViewById(R.id.btnmuahang);
+        btnmuahang = (Button) findViewById(R.id.btnmuahang);
         imgEmptycart = (ImageView) findViewById(R.id.giohangrong);
         productCart = new ProductCart(GioHang.this,MainActivity.arrayCart);
         listCart.setAdapter(productCart);
-
-        ///
+//
+//        ///
         LoadListProduct();
         CheckData();
         CatchOnItemListView();
+        Payment();
+    }
+
+    private void Payment() {
+        btnmuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MainActivity.arrayCart.size() > 0){
+                    final Dialog dialog = new Dialog(GioHang.this);
+                    dialog.setContentView(R.layout.thanh_toan);
+
+                    final EditText NameCus = dialog.findViewById(R.id.NameCustomer);
+                    final EditText AddressCus = dialog.findViewById(R.id.AddressCustomer);
+                    final EditText PhoneCus = dialog.findViewById(R.id.phoneNumber);
+                    final Button btSend = dialog.findViewById(R.id.btnSend);
+
+                    btSend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String ten = NameCus.getText().toString();
+                            String diachi = AddressCus.getText().toString();
+                            String sdt = PhoneCus.getText().toString();
+
+                            if(ten.isEmpty()){
+                                NameCus.setError("Vui lòng nhập học tên!");
+                            }
+                            else if(diachi.isEmpty()){
+                                AddressCus.setError("Vui lòng nhập địa chỉ!");
+                            }
+                            else if(sdt.isEmpty()){
+                                PhoneCus.setError("Vui lòng nhập số điện thoại!");
+                            }
+                            else{
+                                dialog.dismiss();
+                                Toast.makeText(getApplicationContext(),"Bạn đã đặt hàng thành công",Toast.LENGTH_SHORT).show();
+                                imgEmptycart.setVisibility(View.VISIBLE);
+                                long tongtien = 0;
+                                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                                txtTotal.setText(decimalFormat.format(tongtien)+" đ");
+                            }
+                        }
+                    });
+                    dialog.show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Giỏ hàng của bạn chưa có sản phẩm để thanh toán", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void CatchOnItemListView() {

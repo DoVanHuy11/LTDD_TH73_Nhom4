@@ -93,10 +93,11 @@ import model.Cart;
         @Override
         public View getView(final int position, View view, ViewGroup parent) {
             ViewHolder viewHolder = null;
-            if(view == null){               //run 1 nếu view = null
+            if(view == null){
                 viewHolder = new ViewHolder();
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.product_cart,null);
+                //ánh xạ
                 viewHolder.txtnameCart = view.findViewById(R.id.tensp);
                 viewHolder.txtpriceCart = view.findViewById(R.id.giasp);
                 viewHolder.imgCart = view.findViewById(R.id.imgcart);
@@ -104,15 +105,18 @@ import model.Cart;
                 viewHolder.btnplus = view.findViewById(R.id.btplus);
                 viewHolder.btnvalues = view.findViewById(R.id.btvalues);
                 view.setTag(viewHolder);
-            }else {                         //run 2
+            }else {
                 viewHolder = (ViewHolder) view.getTag();
             }
 
             //lấy dl ra gán cho layout
             Cart cart = (Cart) getItem(position);
+            //Cart cart  = arrayGiohang.get(position);
             viewHolder.txtnameCart.setText(cart.getTensp());
+
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             viewHolder.txtpriceCart.setText(decimalFormat.format(cart.getGiasp()) + " đ");
+
             Picasso.get().load(arrayGiohang.get(position).getHinhsp()).into(viewHolder.imgCart);
             viewHolder.btnvalues.setText(cart.getSoluong() + "");           //cast về dạng chuỗi
 
@@ -129,7 +133,7 @@ import model.Cart;
             }
 
             final ViewHolder finalViewHolder = viewHolder;
-            viewHolder.btnvalues.setOnClickListener(new View.OnClickListener() {
+            viewHolder.btnplus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int slmoi = Integer.parseInt(finalViewHolder.btnvalues.getText().toString()) + 1;
@@ -138,8 +142,10 @@ import model.Cart;
                     MainActivity.arrayCart.get(position).setSoluong(slmoi);
                     long giamoi = (giaht * slmoi) / slht;
                     MainActivity.arrayCart.get(position).setGiasp(giamoi);
+
                     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                     finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
+
                     GioHang.LoadListProduct();
                     if(slmoi > 9){
                         finalViewHolder.btnplus.setVisibility(View.INVISIBLE);
@@ -155,7 +161,7 @@ import model.Cart;
             viewHolder.btnminus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int slmoi = Integer.parseInt(finalViewHolder.btnvalues.getText().toString()) + 1;
+                    int slmoi = Integer.parseInt(finalViewHolder.btnvalues.getText().toString()) - 1;
                     int slht = MainActivity.arrayCart.get(position).getSoluong();
                     long giaht = MainActivity.arrayCart.get(position).getGiasp();
                     MainActivity.arrayCart.get(position).setSoluong(slmoi);
@@ -163,6 +169,7 @@ import model.Cart;
                     MainActivity.arrayCart.get(position).setGiasp(giamoi);
                     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                     finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
+
                     GioHang.LoadListProduct();
                     if(slmoi < 2){
                         finalViewHolder.btnminus.setVisibility(View.INVISIBLE);
