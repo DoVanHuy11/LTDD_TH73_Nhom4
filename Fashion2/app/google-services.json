@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "16723084004",
+    "firebase_url": "https://degreyshop-fabb4.firebaseio.com",
+    "project_id": "degreyshop-fabb4",
+    "storage_bucket": "degreyshop-fabb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16723084004:android:25cb1aeba7c45e7ed862f1",
+        "android_client_info": {
+          "package_name": "com.example.fashion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16723084004-2va70deart3t0st7fobck25u7ndgis65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv4J_WU7RetmV0FcOsheDyEe6dnPWrhAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16723084004-2va70deart3t0st7fobck25u7ndgis65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,18 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Product_Layout" />
-        <activity android:name=".listView_navigation" />
         <activity android:name=".howToBuy" />
         <activity android:name=".About" />
         <activity android:name=".GioHang" />
         <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

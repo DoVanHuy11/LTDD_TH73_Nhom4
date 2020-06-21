@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class LogInActivity extends AppCompatActivity {
     EditText edtUser,edtPassWord;
@@ -31,6 +32,9 @@ public class LogInActivity extends AppCompatActivity {
     ImageView imgThoat;
     String user,passWord;
     private FirebaseAuth mAuth;
+    //Khuôn email hợp lệ , vd : abc@gmail.com
+    String EMAIL_PATTERN =
+            "^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +43,11 @@ public class LogInActivity extends AppCompatActivity {
 
         anhXa();
         controlImage();
-        controlTextView();
-        conntrolButton();
+        SetUpSignUp();
+        SetUpButtonLogin();
     }
 
-    private void controlTextView() {
+    private void SetUpSignUp() {
         tvDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +91,7 @@ public class LogInActivity extends AppCompatActivity {
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         if(s.length() == 0){
                             edtEmail.setError("Không được bỏ trống");
-                        }else if(!s.toString().contains("@")){
+                        }else if(!Pattern.matches(EMAIL_PATTERN,edtEmail.getText().toString())){
                             edtEmail.setError("Email không hợp lệ");
                         }else
                             edtEmail.setError(null);
@@ -202,14 +206,14 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
     public boolean isOnline() {
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
-            int     exitValue = ipProcess.waitFor();
-            return (exitValue == 0);
-        }
-        catch (IOException e)          { e.printStackTrace(); }
-        catch (InterruptedException e) { e.printStackTrace(); }
+//        Runtime runtime = Runtime.getRuntime();
+//        try {
+//            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+//            int     exitValue = ipProcess.waitFor();
+//            return (exitValue == 0);
+//        }
+//        catch (IOException e)          { e.printStackTrace(); }
+//        catch (InterruptedException e) { e.printStackTrace(); }
 
         return false;
     }
@@ -231,32 +235,25 @@ public class LogInActivity extends AppCompatActivity {
                 });
     }
 
-    private void conntrolButton() {
+    private void SetUpButtonLogin() {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtUser.getText().length() != 0 && edtPassWord.getText().length() != 0){
+                user = edtUser.getText().toString().trim();
+                passWord = edtPassWord.getText().toString().trim();
+
+
+                if(!Pattern.matches(EMAIL_PATTERN,user))
+                    Toast.makeText(LogInActivity.this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+                else if(passWord.length() == 0 )
+                    Toast.makeText(LogInActivity.this, "Password không hợp lệ", Toast.LENGTH_SHORT).show();
+                else
                     dangNhap(user,passWord);
-//                    if(edtUser.getText().toString().equals(user) && edtPassWord.getText().toString().equals(passWord)){
-//                        Toast.makeText(MainActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-//                        startActivity(intent);
-//                    }else
-                    if(edtUser.getText().toString().equals("admin") && edtPassWord.getText().toString().equals("123456")){
-                        Toast.makeText(LogInActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-                        startActivity(intent);
-                    }
-                }else {
-                    Toast.makeText(LogInActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
 
     private void dangNhap(String user, String passWord){
-        user = edtUser.getText().toString().trim();
-        passWord = edtPassWord.getText().toString().trim();
         mAuth.signInWithEmailAndPassword(user, passWord)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
