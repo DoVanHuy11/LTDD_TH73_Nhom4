@@ -1,4 +1,4 @@
-package myadapter;
+package com.example.fashion.myadapter;
 
 import android.content.Context;
 import android.view.View;

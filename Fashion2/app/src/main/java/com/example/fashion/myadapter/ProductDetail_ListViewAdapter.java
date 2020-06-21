@@ -1,4 +1,4 @@
-package myadapter;
+package com.example.fashion.myadapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

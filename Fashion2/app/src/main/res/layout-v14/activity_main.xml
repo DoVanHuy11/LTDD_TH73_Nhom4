@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout_Main"
         android:layout_width="match_parent"
@@ -17,18 +15,15 @@
             android:layout_height="wrap_content"
             tools:ignore="InvalidId,MissingConstraints"
             android:id="@+id/LL1"
-            android:orientation="vertical"
-            style="@style/ThemeOverlay.AppCompat.Light">
-
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolBar_Main"-->
-<!--                android:background="@color/colorPrimaryDark"-->
-<!--                app:title="Trang chủ"-->
-<!--                app:titleTextColor="#FFFFFF"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="?attr/actionBarSize">-->
-<!--            </androidx.appcompat.widget.Toolbar>-->
-
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar_Main"
+                android:background="@color/colorPrimaryDark"
+                app:title="Trang chủ"
+                app:titleTextColor="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+            </androidx.appcompat.widget.Toolbar>
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
@@ -40,64 +35,29 @@
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/LL1"
-                tools:ignore="MissingConstraints"
-                android:dividerHeight="0dp"
-                android:divider="@null">
+                tools:ignore="MissingConstraints">
             </ListView>
         </LinearLayout>
-
-        <androidx.drawerlayout.widget.DrawerLayout
+        <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view_main"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity = "start"
-            tools:ignore="MissingClass">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#ffffff">
-            <!-- Header -->
+            android:layout_gravity = "start">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:id="@+id/nav1"
-                android:background="#000000"
-                android:gravity="top"
                 android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    app:srcCompat="@drawable/logo" />
-                <TextView
+                    android:id="@+id/imgLogo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="DeGrey SHOP"
-                    android:textColor="#ffffff"
-                    android:textSize="25sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="www.degreyshop.com.vn"
-                    android:textColor="#ffffff"
-                    android:textSize="15sp"/>
+                    android:layout_height="150dp"/>
+                <ListView
+                    android:id="@+id/listView_Menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <ListView
-                android:layout_marginTop="30dp"
-                android:id="@+id/listView_nav"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/nav1"
-                android:dividerHeight="0dp"
-                android:divider="@null">
-            </ListView>
-        </LinearLayout>
-
-        </androidx.drawerlayout.widget.DrawerLayout>
+        </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

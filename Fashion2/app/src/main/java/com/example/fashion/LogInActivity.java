@@ -45,6 +45,9 @@ public class LogInActivity extends AppCompatActivity {
         controlImage();
         SetUpSignUp();
         SetUpButtonLogin();
+
+        edtUser.setText("nhantruong1298@gmail.com");
+        edtPassWord.setText("123456");
     }
 
     private void SetUpSignUp() {
@@ -206,14 +209,7 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
     public boolean isOnline() {
-//        Runtime runtime = Runtime.getRuntime();
-//        try {
-//            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
-//            int     exitValue = ipProcess.waitFor();
-//            return (exitValue == 0);
-//        }
-//        catch (IOException e)          { e.printStackTrace(); }
-//        catch (InterruptedException e) { e.printStackTrace(); }
+        //Chức năng này k dung dc
 
         return false;
     }

@@ -9,51 +9,51 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
+
+import com.example.fashion.model.ItemNavigation;
+import com.example.fashion.myadapter.MenuAdapter;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import model.Cart;
-import myadapter.ImageAdapter;
-import myadapter.ProductAdapter;
+import com.example.fashion.model.Cart;
+import com.example.fashion.myadapter.ImageAdapter;
+import com.example.fashion.myadapter.ProductAdapter;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Cart> arrayCart;
-
     private ListView listView;
     private ListView listView_nav;
-
+    private Toolbar toolbar;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private ViewPager mViewPager;
+    private ListView listProduct,listViewMenu;
+    private ImageView imgLogo;
     String[] navtitle ={
             "SẢN PHẨM", "GIỚI THIỆU", "HƯỚNG DẪN",
     };
 
-    Integer[] navic = {
-            R.drawable.ic_ao,
-            R.drawable.ic_about,
-            R.drawable.ic_how,
-    };
+    Integer[] navic = {R.drawable.ic_ao, R.drawable.ic_about, R.drawable.ic_how,};
     ///
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 500; //delay in milliseconds before task is to be executed
     final long PERIOD_MS = 3000;  // time in milliseconds between successive task executions.
 
-    private ListView listProduct;
-    Button btnAdd;
-    String[] maintitle={
-            "T-shirt Stockholm Ancient DJ", "Barbed Wire Shirt", "Warning Sleeve", "Warning Tee Đen",  "Color Block Tee", "Rat TShirt - RTS"
-    };
 
-    String[] subtitle={
-            "350.000", "439.000", "365.000",  "512.000", "355.000", "455.000",
-    };
+    Button btnAdd;
 
     Integer[] imgId={
             R.drawable.tshirt41, R.drawable.img3, R.drawable.img4,
@@ -66,21 +66,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProductAdapter adapter = new ProductAdapter(this , maintitle, subtitle, imgId);
-        listProduct = (ListView) findViewById(R.id.listProduct);
-        listProduct.setAdapter(adapter);
+        AnhXa();
+        SetActionBar();
+        SetListProduct();
+        SetViewPager();
+        setNavigation();
 
-   //////////////////////////
-
-        listView_navigation adapter_nav = new listView_navigation(this , navtitle, navic);
-        listView_nav = (ListView) findViewById(R.id.listView_nav);
-        listView_nav.setAdapter(adapter_nav);
-
-        final ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        ImageAdapter adapter1 = new ImageAdapter(this );
-        mViewPager.setAdapter(adapter1);
-
-        ////
+        //Set hình ảnh cho viewpager
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
             public void run() {
@@ -101,15 +93,85 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listProduct);
         CatchOnItemListView();
-        CatchOnItemListView2();
 
-        //lấy và đưa dữ liệu vào mảng
-        if(arrayCart != null){
 
-        }else {
-            arrayCart = new ArrayList<>();
-        }
+    }
+    private void setNavigation(){
+        //Navigate chứa 2 thành phần logo vs listview menu
+        imgLogo.setImageResource(R.drawable.logo);
+        imgLogo.setScaleType(ImageView.ScaleType.FIT_XY);
+        //
+        ArrayList<ItemNavigation> arrayList = new ArrayList<ItemNavigation>();
+        arrayList.add(new ItemNavigation(R.drawable.ic_ao,"Sản phẩm"));
+        arrayList.add(new ItemNavigation(R.drawable.ic_about,"Giới thiệu"));
+        arrayList.add(new ItemNavigation(R.drawable.ic_how,"Hướng dẫn"));
+        MenuAdapter menuAdapter = new MenuAdapter(arrayList,this);
+        listViewMenu.setAdapter(menuAdapter);
+        SetClickITemListViewMenu();
+    }
 
+    private void SetClickITemListViewMenu() {
+        listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent;
+                switch (position) {
+                    case 0:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        intent = new Intent(MainActivity.this, Product_Layout.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        intent = new Intent(MainActivity.this, About.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        intent = new Intent(MainActivity.this, howToBuy.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+        });
+    };
+
+
+    private void SetViewPager() {
+        final ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        ImageAdapter adapter1 = new ImageAdapter(this );
+        mViewPager.setAdapter(adapter1);
+    }
+
+    private void SetListProduct() {
+        ProductAdapter adapter = new ProductAdapter(this ,
+                getResources().getStringArray(R.array.mainTitle),
+                getResources().getStringArray(R.array.subtitle),
+                imgId);
+        listProduct = (ListView) findViewById(R.id.listProduct);
+        listProduct.setAdapter(adapter);
+    }
+
+    private void SetActionBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+    }
+
+    private void AnhXa() {
+        listProduct = (ListView) findViewById(R.id.listProduct);
+        toolbar= findViewById(R.id.toolBar_Main);
+        navigationView = findViewById(R.id.navigation_view_main);
+        drawerLayout = findViewById(R.id.drawerLayout_Main);
+        mViewPager  = (ViewPager) findViewById(R.id.viewPager);
+        listViewMenu = findViewById(R.id.listView_Menu);
+        imgLogo = findViewById(R.id.imgLogo);
     }
 
     private void CatchOnItemListView() {

@@ -1,18 +1,13 @@
-package myadapter;
+package com.example.fashion.myadapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fashion.GioHang;
 import com.example.fashion.MainActivity;
@@ -22,7 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import model.Cart;
+import com.example.fashion.model.Cart;
 
 //public class ProductCart extends ArrayAdapter<String> {
 //    private final Activity context;

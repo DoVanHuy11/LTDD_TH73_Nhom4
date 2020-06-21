@@ -2,7 +2,6 @@ package com.example.fashion;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,14 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import model.Cart;
-import myadapter.ProductDetail_ImageAdapter;
-import myadapter.ProductDetail_ListViewAdapter;
+import com.example.fashion.myadapter.ProductDetail_ImageAdapter;
+import com.example.fashion.myadapter.ProductDetail_ListViewAdapter;
 
 public class ProductDetailActivity extends AppCompatActivity {
 

@@ -1,7 +1,6 @@
-package myadapter;
+package com.example.fashion.myadapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
-import com.example.fashion.MainActivity;
 import com.example.fashion.R;
 
 public class ProductAdapter extends ArrayAdapter<String> {

@@ -19,11 +19,10 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-import model.Cart;
-import myadapter.ProductCart;
+import com.example.fashion.myadapter.ProductCart;
 
 public class GioHang extends AppCompatActivity {
-    ListView listCart;
+    ListView listCart,listViewMenu;
     static TextView txtTotal;
     ImageView imgEmptycart;
     Button btnmuahang;

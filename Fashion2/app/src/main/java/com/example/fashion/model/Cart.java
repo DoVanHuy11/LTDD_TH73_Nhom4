@@ -1,4 +1,4 @@
-package model;
+package com.example.fashion.model;
 
 public class Cart {
     public int idsp;

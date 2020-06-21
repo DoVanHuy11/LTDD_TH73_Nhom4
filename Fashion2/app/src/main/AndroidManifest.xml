@@ -22,7 +22,7 @@
         <activity android:name=".About" />
         <activity android:name=".GioHang" />
         <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" android:theme="@style/NoActionBar"/>
     </application>
 
 </manifest>

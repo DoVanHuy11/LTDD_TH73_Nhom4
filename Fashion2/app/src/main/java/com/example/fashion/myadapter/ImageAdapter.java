@@ -1,9 +1,7 @@
-package myadapter;
+package com.example.fashion.myadapter;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.view.View;
 
@@ -12,8 +10,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.R;
-
-import java.io.ObjectInput;
 
 public class ImageAdapter extends PagerAdapter {
     Context mcontext;
