@@ -1,6 +1,7 @@
 package com.example.fashion;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +26,7 @@ import com.example.fashion.myadapter.ProductDetail_ListViewAdapter;
 public class ProductDetailActivity extends AppCompatActivity {
 
     private Spinner spinner;
-    Button btnAddCart0, btnAddCart1;
+    Button btnAddCart0,  btnSmall, btnMiddle, btnBig;
     ListView listProductDetail;
     ////
     TextView txtTen,txtGia,txtMota;
@@ -164,6 +165,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         btnAddCart0 = (Button) findViewById(R.id.btnAddCart0);
         listProductDetail = (ListView) findViewById(R.id.listProductDetail);
+        btnSmall= (Button) findViewById(R.id.btnProductSizeS);
+        btnMiddle= (Button) findViewById(R.id.btnProductSizeM);
+        btnBig= (Button) findViewById(R.id.btnProductSizeB);
 
         ////
 
@@ -184,6 +188,48 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
             }});
+
+        btnSmall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnSmall.isClickable()){
+                    btnSmall.setBackgroundColor(Color.BLACK);
+                    btnSmall.setTextColor(Color.WHITE);
+                    btnMiddle.setBackgroundColor(Color.WHITE);
+                    btnMiddle.setTextColor(Color.BLACK);
+                    btnBig.setBackgroundColor(Color.WHITE);
+                    btnBig.setTextColor(Color.BLACK);
+                }
+            }
+        });
+
+        btnMiddle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnMiddle.isClickable() == true){
+                    btnMiddle.setBackgroundColor(Color.BLACK);
+                    btnMiddle.setTextColor(Color.WHITE);
+                    btnSmall.setBackgroundColor(Color.WHITE);
+                    btnSmall.setTextColor(Color.BLACK);
+                    btnBig.setBackgroundColor(Color.WHITE);
+                    btnBig.setTextColor(Color.BLACK);
+                }
+            }
+        });
+
+        btnBig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnBig.isClickable() == true){
+                    btnBig.setBackgroundColor(Color.BLACK);
+                    btnBig.setTextColor(Color.WHITE);
+                    btnSmall.setBackgroundColor(Color.WHITE);
+                    btnSmall.setTextColor(Color.BLACK);
+                    btnMiddle.setBackgroundColor(Color.WHITE);
+                    btnMiddle.setTextColor(Color.BLACK);
+                }
+            }
+        });
     }
 
     private void SetFocusForListView(){
