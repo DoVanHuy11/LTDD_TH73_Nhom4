@@ -87,6 +87,9 @@ public class GioHang extends AppCompatActivity {
                                 dialog.dismiss();
                                 Toast.makeText(getApplicationContext(),"Bạn đã đặt hàng thành công",Toast.LENGTH_SHORT).show();
                                 imgEmptycart.setVisibility(View.VISIBLE);
+                                listCart = null;
+                                MainActivity.arrayCart = null;
+                                productCart.notifyDataSetChanged();
                                 long tongtien = 0;
                                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                                 txtTotal.setText(decimalFormat.format(tongtien)+" đ");
@@ -96,7 +99,7 @@ public class GioHang extends AppCompatActivity {
                     dialog.show();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Giỏ hàng của bạn chưa có sản phẩm để thanh toán", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Giỏ hàng chưa có sản phẩm để thanh toán", Toast.LENGTH_SHORT).show();
                 }
             }
         });

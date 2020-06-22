@@ -230,6 +230,12 @@ public class MainActivity extends AppCompatActivity {
         listViewMenu = findViewById(R.id.listView_Menu);
         imgLogo = findViewById(R.id.imgLogo);
 
+        if(arrayCart != null){
+
+        }else {
+            arrayCart = new ArrayList<>();
+        }
+
         //Khởi tạo firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }

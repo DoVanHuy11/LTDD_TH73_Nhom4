@@ -19,42 +19,6 @@ import java.util.ArrayList;
 
 import com.example.fashion.model.Cart;
 
-//public class ProductCart extends ArrayAdapter<String> {
-//    private final Activity context;
-//    private final String[] maintitle;
-//    private final String[] subtitle;
-//    private final Integer[] imgid;
-//    private Button btvalues;
-//    private Button btminus,btplus;
-//
-//    public ProductCart(Activity context,String[] maintitle,String[] subtitle,Integer[] imgid,Button btvalues){
-//        super(context,R.layout.product_cart,maintitle);
-//        this.context = context;
-//        this.maintitle = maintitle;
-//        this.subtitle = subtitle;
-//        this.imgid = imgid;
-//        this.btvalues = btvalues;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public View getView(int position, View view, ViewGroup parent) {
-//        LayoutInflater inflater = context.getLayoutInflater();
-//        View row = inflater.inflate(R.layout.product_cart, null, true);
-//        TextView title = (TextView) row.findViewById(R.id.tensp);
-//        TextView sub_title = (TextView) row.findViewById(R.id.giasp);
-//        ImageView img = (ImageView) row.findViewById(R.id.imgcart);
-//        Button btnval = (Button) row.findViewById(R.id.btvalues);
-//
-//        title.setText(maintitle[position]);
-//        sub_title.setText(subtitle[position]);
-//        img.setImageResource(imgid[position]);
-//
-//
-//        return row;
-//    }
-//}
-
     public class ProductCart extends BaseAdapter{
         Context context;
         ArrayList<Cart> arrayGiohang;
@@ -80,7 +44,7 @@ import com.example.fashion.model.Cart;
         }
 
         public class ViewHolder{            //gán ánh xạ nếu run lần 2
-            public TextView txtnameCart,txtpriceCart;
+            public TextView txtnameCart,txtpriceCart,txtsize;
             public ImageView imgCart;
             public Button btnminus,btnvalues,btnplus;
         }
@@ -99,6 +63,7 @@ import com.example.fashion.model.Cart;
                 viewHolder.btnminus = view.findViewById(R.id.btminus);
                 viewHolder.btnplus = view.findViewById(R.id.btplus);
                 viewHolder.btnvalues = view.findViewById(R.id.btvalues);
+                viewHolder.txtsize = view.findViewById(R.id.txtSize);
                 view.setTag(viewHolder);
             }else {
                 viewHolder = (ViewHolder) view.getTag();
@@ -107,13 +72,14 @@ import com.example.fashion.model.Cart;
             //lấy dl ra gán cho layout
             Cart cart = (Cart) getItem(position);
             //Cart cart  = arrayGiohang.get(position);
-            viewHolder.txtnameCart.setText(cart.getTensp());
+            //viewHolder.txtnameCart.setText(cart.getTensp());
 
-            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-            viewHolder.txtpriceCart.setText(decimalFormat.format(cart.getGiasp()) + " đ");
+            //DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+            //viewHolder.txtpriceCart.setText(decimalFormat.format(cart.getGiasp()) + " đ");
 
-            Picasso.get().load(arrayGiohang.get(position).getHinhsp()).into(viewHolder.imgCart);
+            //Picasso.get().load(arrayGiohang.get(position).getHinhsp()).into(viewHolder.imgCart);
             viewHolder.btnvalues.setText(cart.getSoluong() + "");           //cast về dạng chuỗi
+            viewHolder.txtsize.setText(cart.getSize());
 
             int sl = Integer.parseInt(viewHolder.btnvalues.getText().toString());
             if(sl >= 10){
@@ -138,8 +104,8 @@ import com.example.fashion.model.Cart;
                     long giamoi = (giaht * slmoi) / slht;
                     MainActivity.arrayCart.get(position).setGiasp(giamoi);
 
-                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                    finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
+                    //DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    //finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
 
                     GioHang.LoadListProduct();
                     if(slmoi > 9){
@@ -162,8 +128,8 @@ import com.example.fashion.model.Cart;
                     MainActivity.arrayCart.get(position).setSoluong(slmoi);
                     long giamoi = (giaht * slmoi) / slht;
                     MainActivity.arrayCart.get(position).setGiasp(giamoi);
-                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                    finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
+                    //DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    //finalViewHolder.txtpriceCart.setText(decimalFormat.format(giamoi) + " đ");
 
                     GioHang.LoadListProduct();
                     if(slmoi < 2){
