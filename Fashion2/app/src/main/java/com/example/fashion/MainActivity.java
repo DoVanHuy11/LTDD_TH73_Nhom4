@@ -19,10 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.model.ItemNavigation;
+import com.example.fashion.model.ItemRecycleView;
 import com.example.fashion.myadapter.MenuAdapter;
+import com.example.fashion.myadapter.ProductRecycleViewAdapter;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -46,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ViewPager mViewPager;
-    private ListView listProduct,listViewMenu;
+    private ListView listViewMenu;
     private ImageView imgLogo;
+    private RecyclerView listProduct;
 
     //Khai báo firebase
     private DatabaseReference mDatabase;
@@ -81,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
         AnhXa();
         SetActionBar();
-        SetListProduct();
+    //    SetListProduct();
+        setRecycleView();
         SetViewPager();
         setNavigation();
 
@@ -104,11 +109,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-        listView = (ListView) findViewById(R.id.listProduct);
-        CatchOnItemListView();
+     //   listView = (ListView) findViewById(R.id.listProduct);
+      //  CatchOnItemListView();
 
 
     }
+
+    private void setRecycleView() {
+        final ArrayList<ItemRecycleView> arrayList = new ArrayList<>();
+        final ArrayList<String> arrayKeys = new ArrayList<String>();
+        final ProductRecycleViewAdapter recycleViewAdapter = new ProductRecycleViewAdapter(this
+                ,arrayList,arrayKeys);
+        mDatabase.child("");
+
+    }
+
     private void setNavigation(){
         //Navigate chứa 2 thành phần logo vs listview menu
         imgLogo.setImageResource(R.drawable.logo);
@@ -191,8 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getStringArray(R.array.mainTitle),
                 getResources().getStringArray(R.array.subtitle),
                 imgId);
-        listProduct = (ListView) findViewById(R.id.listProduct);
-        listProduct.setAdapter(adapter);
+      //  listProduct.setAdapter(adapter);
     }
 
     private void SetActionBar() {
@@ -208,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
-        listProduct = (ListView) findViewById(R.id.listProduct);
+        listProduct = (RecyclerView) findViewById(R.id.listProduct);
         toolbar= findViewById(R.id.toolBar_Main);
         navigationView = findViewById(R.id.navigation_view_main);
         drawerLayout = findViewById(R.id.drawerLayout_Main);
