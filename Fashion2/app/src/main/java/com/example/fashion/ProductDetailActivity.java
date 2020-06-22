@@ -196,6 +196,11 @@ public class ProductDetailActivity extends AppCompatActivity {
             startActivity(cart);
             return true;
         }
+        else if(id == R.id.idAccount) {
+            Intent account = new Intent(this, AccountActivity.class);
+            startActivity(account);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
