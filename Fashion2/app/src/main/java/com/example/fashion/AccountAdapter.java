@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +40,8 @@ public class AccountAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView tvAcTieuDe,tvAcThongTin;
+        TextView tvAcTieuDe;
+        EditText tvAcThongTin;
         ImageView imgAccount;
     }
 
@@ -52,7 +54,7 @@ public class AccountAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
 
             viewHolder.tvAcTieuDe = (TextView) convertView.findViewById(R.id.tvAcTieuDe);
-            viewHolder.tvAcThongTin = (TextView) convertView.findViewById(R.id.tvAcThongTin);
+            viewHolder.tvAcThongTin = (EditText) convertView.findViewById(R.id.edtAcThongTin);
             viewHolder.imgAccount = (ImageView) convertView.findViewById((R.id.imgAccount));
             convertView.setTag(viewHolder);
         }else viewHolder = (ViewHolder) convertView.getTag();
