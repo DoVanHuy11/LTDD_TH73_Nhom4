@@ -130,15 +130,10 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        intent = new Intent(MainActivity.this, Product_Layout.class);
-                        startActivity(intent);
-                        break;
-                    case 1:
-                        drawerLayout.closeDrawer(GravityCompat.START);
                         intent = new Intent(MainActivity.this, About.class);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 1:
                         drawerLayout.closeDrawer(GravityCompat.START);
                         intent = new Intent(MainActivity.this, howToBuy.class);
                         startActivity(intent);
