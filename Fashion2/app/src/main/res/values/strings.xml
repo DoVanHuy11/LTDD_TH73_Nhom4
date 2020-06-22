@@ -54,5 +54,6 @@
         <item>355.000</item>
         <item>455.000</item>
     </string-array>
-
+    //Cac node của firebase
+    <string name="IMGVP">ImageViewPager</string>
 </resources>

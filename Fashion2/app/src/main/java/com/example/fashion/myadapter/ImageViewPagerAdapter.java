@@ -10,11 +10,16 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.R;
+import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends PagerAdapter {
+import java.util.ArrayList;
+
+public class ImageViewPagerAdapter extends PagerAdapter {
     Context mcontext;
-    public ImageAdapter(Context context){
+    ArrayList<String> imageAddress;
+    public ImageViewPagerAdapter(Context context,ArrayList<String> imageAddress){
         this.mcontext= context;
+        this.imageAddress = imageAddress;
     }
 
     @Override
@@ -22,17 +27,17 @@ public class ImageAdapter extends PagerAdapter {
         return view == ((ImageView) object);
     }
 
-    private int[] sliderImageId= new int[]{
-            R.drawable.img1,
-            R.drawable.img1_1,
-            R.drawable.img1_2,
-            R.drawable.img1_3,
-            R.drawable.img1_4,
-    };
+//    private int[] sliderImageId= new int[]{
+//            R.drawable.img1,
+//            R.drawable.img1_1,
+//            R.drawable.img1_2,
+//            R.drawable.img1_3,
+//            R.drawable.img1_4,
+//    };
 
     @Override
     public int getCount() {
-        return sliderImageId.length;
+        return imageAddress.size();
     }
 
     @NonNull
@@ -40,7 +45,9 @@ public class ImageAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position){
         ImageView imageView = new ImageView(mcontext);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(sliderImageId[position]);
+        Picasso.get().load(imageAddress.get(position))
+                .placeholder(R.drawable.imgload)
+                .into(imageView);
         ((ViewPager) container).addView(imageView,0 );
         return imageView;
     }
@@ -49,8 +56,6 @@ public class ImageAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object){
         ((ViewPager) container).removeView((ImageView) object);
     }
-
-
 
 
 }

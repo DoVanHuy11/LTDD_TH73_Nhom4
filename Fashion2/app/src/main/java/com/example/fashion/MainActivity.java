@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -28,8 +30,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.example.fashion.model.Cart;
-import com.example.fashion.myadapter.ImageAdapter;
+import com.example.fashion.myadapter.ImageViewPagerAdapter;
 import com.example.fashion.myadapter.ProductAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Cart> arrayCart;
@@ -41,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private ListView listProduct,listViewMenu;
     private ImageView imgLogo;
+
+    //Khai báo firebase
+    private DatabaseReference mDatabase;
+    //Các node trong firebase
+    String IMGVP = "ImageViewPager";
+
     String[] navtitle ={
             "SẢN PHẨM", "GIỚI THIỆU", "HƯỚNG DẪN",
     };
@@ -138,9 +151,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void SetViewPager() {
-        final ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        ImageAdapter adapter1 = new ImageAdapter(this );
+        final ArrayList<String> imgAddress = new ArrayList<>();
+        final ImageViewPagerAdapter adapter1 = new ImageViewPagerAdapter(this,imgAddress );
         mViewPager.setAdapter(adapter1);
+        //Lấy dữ liệu từ firebase
+        mDatabase.child(IMGVP).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if(dataSnapshot != null){
+                    imgAddress.add(dataSnapshot.getValue().toString());
+                    adapter1.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void SetListProduct() {
@@ -172,6 +216,9 @@ public class MainActivity extends AppCompatActivity {
         mViewPager  = (ViewPager) findViewById(R.id.viewPager);
         listViewMenu = findViewById(R.id.listView_Menu);
         imgLogo = findViewById(R.id.imgLogo);
+
+        //Khởi tạo firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void CatchOnItemListView() {
