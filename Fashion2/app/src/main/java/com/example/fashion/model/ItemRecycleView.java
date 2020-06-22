@@ -1,6 +1,8 @@
 package com.example.fashion.model;
 
-public class ItemRecycleView {
+import java.io.Serializable;
+
+public class ItemRecycleView implements Serializable {
     private String Description;
     private String Image;
     private String Name;

@@ -16,13 +16,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.model.Cart;
+import com.example.fashion.model.ItemRecycleView;
 import com.example.fashion.myadapter.ProductDetail_ImageAdapter;
 import com.example.fashion.myadapter.ProductDetail_ListViewAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -30,7 +40,15 @@ public class ProductDetailActivity extends AppCompatActivity {
     Button btnAddCart0,  btnSmall, btnMiddle, btnBig;
     ListView listProductDetail;
     String Size = "";
+    ViewPager mViewPager;
+    ActionBar actionBar;
+    TextView tvProductName,tvProductPrice,tvDecribe;
+    ///
+    private DatabaseReference mDatabase;;
     ////
+    ItemRecycleView item;
+    String key;
+    ///
     TextView txtTen,txtGia,txtMota;
     int id = 0;
     String nameProd = "";
@@ -60,23 +78,76 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.product_detail);
 
 //        Image slider
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        ProductDetail_ImageAdapter adapter1 = new ProductDetail_ImageAdapter(this);
-        mViewPager.setAdapter(adapter1);
 
-        getValues();
+        item = (ItemRecycleView) getIntent().getSerializableExtra("item");
+        key = getIntent().getStringExtra("key");
+
+        AnhXa();
+        SetViewPager();
+        SetInfoProduct();
         CatchEventSpinner();
         CatchEventButtonClick();
         CatchOnItemListView();
         SetFocusForListView();
+        SetActionBar();
         //EventButton();
+        SetListRelatedProducts();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
+
+    }
+
+    private void SetInfoProduct() {
+        tvProductName.setText(item.getName());
+        tvProductPrice.setText(item.getPrice().toString()+".000");
+        tvDecribe.setText(item.getDescription());
+    }
+
+    private void SetViewPager() {
+        final ArrayList<String> arrayList = new ArrayList<String>();
+        final ProductDetail_ImageAdapter adapter1 = new ProductDetail_ImageAdapter(this,arrayList);
+        mViewPager.setAdapter(adapter1);
+        mDatabase.child("ImagesProduct").child(key).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if(dataSnapshot!= null){
+                    arrayList.add(dataSnapshot.getValue().toString());
+                    adapter1.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void SetListRelatedProducts() {
         ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, maintitle, subtitle, imgid);
         listProductDetail.setAdapter(adapter2);
+    }
+
+    private void SetActionBar() {
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
 //    private void EventButton() {
@@ -128,19 +199,22 @@ public class ProductDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getValues(){
+    private void AnhXa(){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         spinner = (Spinner) findViewById(R.id.spinner);
         btnAddCart0 = (Button) findViewById(R.id.btnAddCart0);
-        listProductDetail = (ListView) findViewById(R.id.listProductDetail);
+        listProductDetail = (ListView) findViewById(R.id.listRelatedProduct);
         btnSmall= (Button) findViewById(R.id.btnProductSizeS);
         btnMiddle= (Button) findViewById(R.id.btnProductSizeM);
         btnBig= (Button) findViewById(R.id.btnProductSizeB);
 
-        ////
-
         txtTen = (TextView) findViewById(R.id.txtViewProductName);
         txtGia = (TextView) findViewById(R.id.txtViewProductPrice);
         txtMota = (TextView)findViewById(R.id.decribe);
+        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        tvProductName = findViewById(R.id.txtViewProductName);
+        tvProductPrice= findViewById(R.id.txtViewProductPrice);
+        tvDecribe = findViewById(R.id.decribe);
     }
 
     private void CatchEventSpinner() {

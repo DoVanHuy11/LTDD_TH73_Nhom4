@@ -10,32 +10,30 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class ProductDetail_ImageAdapter extends PagerAdapter {
-
+    ArrayList<String> arrayList;
     Context mContext;
 
-    public ProductDetail_ImageAdapter(Context context){
+    public ProductDetail_ImageAdapter(Context context,ArrayList<String> arrayList){
         this.mContext = context;
+        this.arrayList = arrayList;
     }
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == ((ImageView) object);
     }
 
-    private int[] sliderImageId = new int[]{
-            R.drawable.tshirt41,
-            R.drawable.tshirt42,
-            R.drawable.tshirt43,
-            R.drawable.tshirt44,
-    };
-
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView = new ImageView(mContext);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(sliderImageId[position]);
+        Picasso.get().load(arrayList.get(position))
+                .into(imageView);
         ((ViewPager)container).addView(imageView, 0);
         return imageView;
     }
@@ -47,7 +45,7 @@ public class ProductDetail_ImageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return sliderImageId.length;
+        return arrayList.size();
     }
 
 }
