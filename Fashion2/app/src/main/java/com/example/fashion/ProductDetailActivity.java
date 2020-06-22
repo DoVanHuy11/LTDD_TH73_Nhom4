@@ -87,7 +87,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         SetInfoProduct();
         CatchEventSpinner();
         CatchEventButtonClick();
-        CatchOnItemListView();
+       // CatchOnItemListView();
         SetFocusForListView();
         SetActionBar();
         //EventButton();
@@ -140,8 +140,40 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     private void SetListRelatedProducts() {
-        ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, maintitle, subtitle, imgid);
+
+        final ArrayList<ItemRecycleView> arrayList = new ArrayList<ItemRecycleView>();
+        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayList);
         listProductDetail.setAdapter(adapter2);
+        mDatabase.child("ProductsRelated").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if(dataSnapshot != null){
+                    ItemRecycleView item = dataSnapshot.getValue(ItemRecycleView.class);
+                    arrayList.add(item);
+                    adapter2.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void SetActionBar() {

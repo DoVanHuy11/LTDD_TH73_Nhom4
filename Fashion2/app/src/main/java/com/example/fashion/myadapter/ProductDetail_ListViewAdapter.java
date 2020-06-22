@@ -1,6 +1,7 @@
 package com.example.fashion.myadapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,34 +13,53 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.fashion.R;
+import com.example.fashion.model.ItemRecycleView;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class ProductDetail_ListViewAdapter extends ArrayAdapter<String> {
-    private final Activity context;
-    private final String[] maintitle;
-    private final String[] subtitle;
-    private final Integer[] imgid;
+    private Context context;
+    private ArrayList<ItemRecycleView> arrayList;
 
-    public ProductDetail_ListViewAdapter(Activity context, String[] maintitle, String[] subtitle,Integer[] imgid){
-        super(context, R.layout.product2, maintitle);
+    public ProductDetail_ListViewAdapter(Context context,ArrayList<ItemRecycleView> arrayList){
+        super(context, R.layout.product2);
         this.context = context;
-        this.maintitle = maintitle;
-        this.subtitle = subtitle;
-        this.imgid = imgid;
+        this.arrayList = arrayList;
+    }
+
+    public class ViewHolder{
+        TextView tvTitle,tvSubTitle;
+        ImageView img;
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View row = inflater.inflate(R.layout.product2, null, true);
-        TextView title = (TextView) row.findViewById(R.id.productdetail_title);
-        TextView sub_title = (TextView) row.findViewById(R.id.productdetail_subtitle);
-        ImageView img = (ImageView) row.findViewById(R.id.productdetail_img);
+        final ViewHolder viewHolder;
+        if(convertView == null){
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.product2, null, true);
+            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.productdetail_title);
+            viewHolder.tvSubTitle  = (TextView) convertView.findViewById(R.id.productdetail_subtitle);
+             viewHolder.img = (ImageView) convertView.findViewById(R.id.productdetail_img);
 
-        title.setText(maintitle[position]);
-        sub_title.setText(subtitle[position]);
-        img.setImageResource(imgid[position]);
+             convertView.setTag(viewHolder);
+        } else{
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
-        return row;
+        ItemRecycleView itemRecycleView = arrayList.get(position);
+        viewHolder.tvTitle.setText(itemRecycleView.getName());
+        viewHolder.tvSubTitle.setText(itemRecycleView.getPrice()+".000");
+        Picasso.get().load(itemRecycleView.getImage())
+                .into(viewHolder.img);
+        return convertView;
     }
 }
