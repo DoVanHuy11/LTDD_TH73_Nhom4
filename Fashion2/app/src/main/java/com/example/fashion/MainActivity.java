@@ -253,26 +253,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void CatchOnItemListView2() {
-        listView_nav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent[] intent = new Intent[3];
-                intent[0] = new Intent(MainActivity.this, About.class);
-                intent[1] = new Intent(MainActivity.this, howToBuy.class);
-
-                if (position==0)
-                    startActivity(intent[0]);
-
-                else if (position==1)
-                        startActivity(intent[1]);
-
-            }
-        });
-    }
-
-
-
+//    private void CatchOnItemListView2() {
+//        listView_nav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent[] intent = new Intent[3];
+//                intent[0] = new Intent(MainActivity.this, About.class);
+//                intent[1] = new Intent(MainActivity.this, howToBuy.class);
+//
+//                if (position==0)
+//                    startActivity(intent[0]);
+//
+//                else if (position==1)
+//                        startActivity(intent[1]);
+//            }
+//        });
+//    }
+//
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -288,6 +285,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(cart);
             return true;
         }
+            else if(id == R.id.idAccount) {
+                Intent account = new Intent(this, Account.class);
+                startActivity(account);
+                return true;
+            }
         return super.onOptionsItemSelected(item);
     }
 
