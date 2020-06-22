@@ -31,6 +31,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     ViewPager mViewPager;
     ActionBar actionBar;
     TextView tvProductName,tvProductPrice,tvDecribe;
+
     ///
     private DatabaseReference mDatabase;;
     ////
@@ -102,11 +105,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         detailImg = itemRecycleView.getImage();
         description = itemRecycleView.getDescription();
         tvProductName.setText(nameProd);
-        tvDecribe.setText(priceDetal.toString()+ ".000");
+        tvProductPrice.setText(priceDetal.toString()+ ".000");
         tvDecribe.setText(description);
         gia = Integer.parseInt(tvProductPrice.toString());
         id = itemRecycleView.getId();
         idsp = Integer.parseInt(id.toString());
+        Picasso.get().load(detailImg).into((Target) mViewPager);
 
 
 
