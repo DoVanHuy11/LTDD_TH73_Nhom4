@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fashion.R;
+import com.example.fashion.interf.StartActiFromRecycleView;
 import com.example.fashion.model.ItemRecycleView;
 import com.squareup.picasso.Picasso;
 
@@ -19,11 +20,13 @@ import java.util.ArrayList;
 public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecycleViewAdapter.ViewHolder>  {
     ArrayList<String> arrayKeys;
     ArrayList<ItemRecycleView> arrayList;
+    StartActiFromRecycleView startActiFromRecycleView;
     Context context;
-    public ProductRecycleViewAdapter(Context context, ArrayList<ItemRecycleView> arrayList, ArrayList<String> arrayKeys){
+    public ProductRecycleViewAdapter(Context context, ArrayList<ItemRecycleView> arrayList, ArrayList<String> arrayKeys,StartActiFromRecycleView startActiFromRecycleView){
         this.context=context;
         this.arrayList=arrayList;
         this.arrayKeys=arrayKeys;
+        this.startActiFromRecycleView = startActiFromRecycleView;
     }
     @NonNull
     @Override
@@ -37,7 +40,7 @@ public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecyc
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemRecycleView itemRecycleView = arrayList.get(position);
         holder.tvProductTitle.setText(itemRecycleView.getName());
-        holder.tvSubTitle.setText(itemRecycleView.getPrice());
+        holder.tvSubTitle.setText(itemRecycleView.getPrice()+".000");
         Picasso.get().load(itemRecycleView.getImage())
                 .into(holder.imgRecycleItem);
     }
@@ -56,6 +59,12 @@ public class ProductRecycleViewAdapter extends RecyclerView.Adapter<ProductRecyc
             imgRecycleItem=(ImageView)itemView.findViewById(R.id.imgItemRecycle);
             tvProductTitle=(TextView) itemView.findViewById(R.id.titleItemRecycle);
             tvSubTitle=(TextView) itemView.findViewById(R.id.subTitleItemRecycle);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActiFromRecycleView.StartActivity(arrayKeys.get(getAdapterPosition()),arrayList.get(getAdapterPosition()));
+                }
+            });
         }
     }
 }

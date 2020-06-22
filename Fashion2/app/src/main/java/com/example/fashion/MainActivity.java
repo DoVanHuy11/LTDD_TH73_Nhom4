@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fashion.interf.StartActiFromRecycleView;
 import com.example.fashion.model.ItemNavigation;
 import com.example.fashion.model.ItemRecycleView;
 import com.example.fashion.myadapter.MenuAdapter;
@@ -43,7 +44,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StartActiFromRecycleView {
     public static ArrayList<Cart> arrayCart;
     private ListView listView;
     private ListView listView_nav;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<ItemRecycleView> arrayList = new ArrayList<ItemRecycleView>();
         final ArrayList<String> arrayKeys = new ArrayList<String>();
         final ProductRecycleViewAdapter recycleViewAdapter = new ProductRecycleViewAdapter(this
-                ,arrayList,arrayKeys);
+                ,arrayList,arrayKeys,this);
 
         mDatabase.child("ItemRecycleView").addChildEventListener(new ChildEventListener() {
             @Override
@@ -289,4 +290,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void StartActivity(String key, ItemRecycleView item) {
+        Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
+        intent.putExtra("item",item);
+        intent.putExtra("key",key);
+        startActivity(intent);
+    }
 }
