@@ -4,8 +4,8 @@ public class Cart {
     public int idsp;
     public String tensp;
     public long giasp;
-    //public String hinhsp;
-    public int hinhsp;
+    public String hinhsp;
+    //public int hinhsp;
     public int soluong;
 
     public String getSize() {
@@ -18,7 +18,7 @@ public class Cart {
 
     public String Size;
 
-    public Cart(int idsp, String tensp, long giasp, int hinhsp, int soluong,String Size) {
+    public Cart(int idsp, String tensp, long giasp, String hinhsp, int soluong,String Size) {
         this.idsp = idsp;
         this.tensp = tensp;
         this.giasp = giasp;
@@ -51,11 +51,11 @@ public class Cart {
         this.giasp = giasp;
     }
 
-    public int getHinhsp() {
+    public String getHinhsp() {
         return hinhsp;
     }
 
-    public void setHinhsp(int hinhsp) {
+    public void setHinhsp(String hinhsp) {
         this.hinhsp = hinhsp;
     }
 

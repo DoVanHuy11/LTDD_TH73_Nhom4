@@ -50,12 +50,13 @@ public class ProductDetailActivity extends AppCompatActivity {
     String key;
     ///
     TextView txtTen,txtGia,txtMota;
-    int id = 0;
+    String id = "";
+    int idsp = 0;
     String nameProd = "";
-    int priceDetal = 0;
+    String priceDetal = "";
     String detailImg = "";
     String description = "";
-    int idsp = 0;
+    int gia = 0;
 
     Integer [] imgid = {
             R.drawable.img1, R.drawable.img2, R.drawable.img3,R.drawable.img4,
@@ -84,7 +85,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         AnhXa();
         SetViewPager();
-        SetInfoProduct();
+        //SetInfoProduct();
         CatchEventSpinner();
         CatchEventButtonClick();
         CatchOnItemListView();
@@ -92,16 +93,30 @@ public class ProductDetailActivity extends AppCompatActivity {
         SetActionBar();
         //EventButton();
         SetListRelatedProducts();
+        ItemRecycleView itemRecycleView = (ItemRecycleView) getIntent().getSerializableExtra("ItemRecycleView");
+        //int idsp = 0;
+
+        nameProd = itemRecycleView.getName();
+        priceDetal = itemRecycleView.getPrice();
+
+        detailImg = itemRecycleView.getImage();
+        description = itemRecycleView.getDescription();
+        tvProductName.setText(nameProd);
+        tvDecribe.setText(priceDetal.toString()+ ".000");
+        tvDecribe.setText(description);
+        gia = Integer.parseInt(tvProductPrice.toString());
+        id = itemRecycleView.getId();
+        idsp = Integer.parseInt(id.toString());
 
 
 
     }
-
-    private void SetInfoProduct() {
-        tvProductName.setText(item.getName());
-        tvProductPrice.setText(item.getPrice().toString()+".000");
-        tvDecribe.setText(item.getDescription());
-    }
+//
+//    private void SetInfoProduct() {
+//        tvProductName.setText(item.getName());
+//        tvProductPrice.setText(item.getPrice().toString()+".000");
+//        tvDecribe.setText(item.getDescription());
+//    }
 
     private void SetViewPager() {
         final ArrayList<String> arrayList = new ArrayList<String>();
@@ -236,8 +251,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Vui lòng chọn size(Nhỏ/Trung/Lớn)!", Toast.LENGTH_SHORT).show();
                 }else {
                     int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-                    long newprice = soluong * priceDetal;
-                    MainActivity.arrayCart.add(new Cart(1,"T-shirt Stockholm Ancient DJ",newprice,R.drawable.tshirt41,soluong,Size));
+                    long newprice = soluong * gia;
+                    MainActivity.arrayCart.add(new Cart(idsp,nameProd,newprice,detailImg,soluong,Size));
                     Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
                     //Size = "";
                 }

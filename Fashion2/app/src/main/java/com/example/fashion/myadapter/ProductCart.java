@@ -72,12 +72,12 @@ import com.example.fashion.model.Cart;
             //lấy dl ra gán cho layout
             Cart cart = (Cart) getItem(position);
             //Cart cart  = arrayGiohang.get(position);
-            //viewHolder.txtnameCart.setText(cart.getTensp());
+            viewHolder.txtnameCart.setText(cart.getTensp());
 
-            //DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-            //viewHolder.txtpriceCart.setText(decimalFormat.format(cart.getGiasp()) + " đ");
+            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+            viewHolder.txtpriceCart.setText(decimalFormat.format(cart.getGiasp()) + " đ");
 
-            //Picasso.get().load(arrayGiohang.get(position).getHinhsp()).into(viewHolder.imgCart);
+            Picasso.get().load(arrayGiohang.get(position).getHinhsp()).into(viewHolder.imgCart);
             viewHolder.btnvalues.setText(cart.getSoluong() + "");           //cast về dạng chuỗi
             viewHolder.txtsize.setText(cart.getSize());
 
