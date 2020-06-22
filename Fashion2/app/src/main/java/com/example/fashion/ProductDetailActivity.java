@@ -61,10 +61,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     String description = "";
     int gia = 0;
 
-    Integer [] imgid = {
-            R.drawable.img1, R.drawable.img2, R.drawable.img3,R.drawable.img4,
-            R.drawable.img5, R.drawable.img6, R.drawable.img7,R.drawable.img8
-    };
 
     String [] maintitle ={
             "nebula1", "nebula2", "nebula3", "nebula4",
