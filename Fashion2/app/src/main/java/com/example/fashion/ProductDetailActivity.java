@@ -227,10 +227,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnAddCart0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-                long newprice = soluong * priceDetal;
-                MainActivity.arrayCart.add(new Cart(1,"T-shirt Stockholm Ancient DJ",newprice,R.drawable.tshirt41,soluong,Size));
-                Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
+                if(Size == ""){
+                    Toast.makeText(getApplicationContext(), "Vui lòng chọn size(Nhỏ/Trung/Lớn)!", Toast.LENGTH_SHORT).show();
+                }else {
+                    int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+                    long newprice = soluong * priceDetal;
+                    MainActivity.arrayCart.add(new Cart(1,"T-shirt Stockholm Ancient DJ",newprice,R.drawable.tshirt41,soluong,Size));
+                    Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
+                    //Size = "";
+                }
             }});
 
         btnSmall.setOnClickListener(new View.OnClickListener() {
