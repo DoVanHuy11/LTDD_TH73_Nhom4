@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         SetViewPager();
         setNavigation();
 
+
         //Set hình ảnh cho viewpager
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
@@ -96,9 +97,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-
-
     }
+
 
     private void setRecycleView() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
             else if(id == R.id.idAccount) {
-                Intent account = new Intent(this, Account.class);
+                Intent account = new Intent(this, AccountActivity.class);
                 startActivity(account);
                 return true;
             }

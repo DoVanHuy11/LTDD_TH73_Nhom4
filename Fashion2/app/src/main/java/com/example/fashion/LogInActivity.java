@@ -210,14 +210,14 @@ public class LogInActivity extends AppCompatActivity {
                     dialog.show();
 
                     Intent i = new Intent(LogInActivity.this,AccountActivity.class);
-                    String yourname = editName.getText().toString().trim();
-                    String email = edtEmail.getText().toString().trim();
-                    String phone = editPhone.getText().toString().trim();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("ten",yourname);
-                    bundle.putString("dt",phone);
-                    bundle.putString("mail",email);
-                    i.putExtras(bundle);
+//                    String yourname = editName.getText().toString().trim();
+//                    String email = edtEmail.getText().toString().trim();
+//                    String phone = editPhone.getText().toString().trim();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("ten",yourname);
+//                    bundle.putString("dt",phone);
+//                    bundle.putString("mail",email);
+//                    i.putExtras(bundle);
 
                 }
             }
