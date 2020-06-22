@@ -35,4 +35,5 @@
         android:textSize="20sp"
         android:paddingBottom="10dp">
     </TextView>
+
 </LinearLayout>
