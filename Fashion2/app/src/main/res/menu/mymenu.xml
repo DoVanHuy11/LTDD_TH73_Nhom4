@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/idAccount"
+        android:icon="@drawable/ic_face_foreground"
+        android:title="Account"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/idcart"
         android:icon="@drawable/ic_cart_foreground"
-        android:title="Giỏ hàng"
+      android:title="Giỏ hàng"
         app:showAsAction="ifRoom"/>
 
-<!--    <item android:id="@+id/navMenu"-->
-<!--        android:icon="@drawable/ic_menu_foreground"-->
-<!--        android:title="Menu"-->
-<!--        app:showAsAction="always"/>-->
 </menu>

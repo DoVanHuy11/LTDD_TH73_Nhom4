@@ -242,6 +242,12 @@ public class MainActivity extends AppCompatActivity {
         listViewMenu = findViewById(R.id.listView_Menu);
         imgLogo = findViewById(R.id.imgLogo);
 
+        if(arrayCart != null){
+
+        }else {
+            arrayCart = new ArrayList<>();
+        }
+
         //Khởi tạo firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
@@ -259,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -274,6 +281,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(cart);
             return true;
         }
+            else if(id == R.id.idAccount) {
+                Intent account = new Intent(this, Account.class);
+                startActivity(account);
+                return true;
+            }
         return super.onOptionsItemSelected(item);
     }
 

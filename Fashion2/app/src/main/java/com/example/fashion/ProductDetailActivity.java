@@ -20,6 +20,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fashion.model.Cart;
 import com.example.fashion.myadapter.ProductDetail_ImageAdapter;
 import com.example.fashion.myadapter.ProductDetail_ListViewAdapter;
 
@@ -28,6 +29,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private Spinner spinner;
     Button btnAddCart0,  btnSmall, btnMiddle, btnBig;
     ListView listProductDetail;
+    String Size = "";
     ////
     TextView txtTen,txtGia,txtMota;
     int id = 0;
@@ -110,39 +112,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 //                //Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//
-//        btnAddCart1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(MainActivity.arrayCart.size() > 0){      //cập nhật dl
-//                    int sl = Integer.parseInt(spinner.getSelectedItem().toString());
-//                    boolean exists = false;
-//                    for(int i = 0; i< MainActivity.arrayCart.size();i++){         //thay đổi sl nhưng vẫn giữ idsp
-//                        if(MainActivity.arrayCart.get(i).getIdsp() == id){
-//                            MainActivity.arrayCart.get(i).setSoluong(MainActivity.arrayCart.get(i).getSoluong() + sl);
-//                            if(MainActivity.arrayCart.get(i).getSoluong() >= 10){
-//                                MainActivity.arrayCart.get(i).setSoluong(10);
-//                            }
-//                            MainActivity.arrayCart.get(i).setGiasp(priceDetal * MainActivity.arrayCart.get(i).getSoluong());
-//                            exists = true;
-//                        }
-//                    }
-//                    if(exists == false){       //đi vào nhưng ko biết hàng nào cùng id ==> ko cập nhật dl ==> tạo dl ms
-//                        int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-//                        long newprice = soluong * priceDetal;
-//                        MainActivity.arrayCart.add(new Cart(id,nameDetail,newprice,detailImg,soluong));
-//                    }
-//
-//                }else {     //tạo dl ms
-//                    int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
-//                    long newprice = soluong * priceDetal;
-//                    MainActivity.arrayCart.add(new Cart(id,nameDetail,newprice,detailImg,soluong));
-//                }
-//                Intent intent = new Intent(getApplicationContext(),GioHang.class);
-//                startActivity(intent);
-//                //Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 //       }
 
 
@@ -186,12 +155,16 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnAddCart0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+                long newprice = soluong * priceDetal;
+                MainActivity.arrayCart.add(new Cart(1,"T-shirt Stockholm Ancient DJ",newprice,R.drawable.tshirt41,soluong,Size));
                 Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
             }});
 
         btnSmall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Size = btnSmall.getText().toString();
                 if(btnSmall.isClickable()){
                     btnSmall.setBackgroundColor(Color.BLACK);
                     btnSmall.setTextColor(Color.WHITE);
@@ -206,6 +179,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnMiddle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Size = btnMiddle.getText().toString();
                 if(btnMiddle.isClickable() == true){
                     btnMiddle.setBackgroundColor(Color.BLACK);
                     btnMiddle.setTextColor(Color.WHITE);
@@ -220,6 +194,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnBig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Size = btnBig.getText().toString();
                 if(btnBig.isClickable() == true){
                     btnBig.setBackgroundColor(Color.BLACK);
                     btnBig.setTextColor(Color.WHITE);
