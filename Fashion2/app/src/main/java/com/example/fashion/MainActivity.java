@@ -166,12 +166,12 @@ public class MainActivity extends AppCompatActivity implements StartActiFromRecy
                 switch (position) {
                     case 0:
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        intent = new Intent(MainActivity.this, Product_Layout.class);
+                        intent = new Intent(MainActivity.this, About.class);
                         startActivity(intent);
                         break;
                     case 1:
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        intent = new Intent(MainActivity.this, About.class);
+                        intent = new Intent(MainActivity.this, howToBuy.class);
                         startActivity(intent);
                         break;
                     case 2:
@@ -251,19 +251,6 @@ public class MainActivity extends AppCompatActivity implements StartActiFromRecy
 
         //Khởi tạo firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
-    }
-
-    private void CatchOnItemListView() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                for(position = 0; position <= listView.getCount(); position++){
-                    Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
-                    startActivity(intent);
-                    break;
-                }
-            }
-        });
     }
 
 
