@@ -75,7 +75,7 @@ public class GioHang extends AppCompatActivity {
                             String sdt = PhoneCus.getText().toString();
 
                             if(ten.isEmpty()){
-                                NameCus.setError("Vui lòng nhập học tên!");
+                                NameCus.setError("Vui lòng nhập họ tên!");
                             }
                             else if(diachi.isEmpty()){
                                 AddressCus.setError("Vui lòng nhập địa chỉ!");
@@ -88,11 +88,11 @@ public class GioHang extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"Bạn đã đặt hàng thành công",Toast.LENGTH_SHORT).show();
                                 imgEmptycart.setVisibility(View.VISIBLE);
                                 listCart = null;
-                                MainActivity.arrayCart = null;
-                                productCart.notifyDataSetChanged();
+                                MainActivity.arrayCart.clear();
                                 long tongtien = 0;
                                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                                 txtTotal.setText(decimalFormat.format(tongtien)+" đ");
+                                productCart.notifyDataSetChanged();
                             }
                         }
                     });

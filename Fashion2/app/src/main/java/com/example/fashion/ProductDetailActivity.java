@@ -33,7 +33,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     ////
     TextView txtTen,txtGia,txtMota;
     int id = 0;
-    String nameDetail = "";
+    String nameProd = "";
     int priceDetal = 0;
     String detailImg = "";
     String description = "";
@@ -99,7 +99,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 //                    if(exists == false){       //đi vào nhưng ko kiếm đc hàng nào cùng id ==> ko cập nhật dl ==> tạo dl ms
 //                        int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
 //                        long newprice = soluong * priceDetal;
-//                        MainActivity.arrayCart.add(new Cart(id,nameDetail,newprice,detailImg,soluong));
+//                        MainActivity.arrayCart.add(new Cart(id,nameProd,newprice,detailImg,soluong));
 //                    }
 //
 //                }else {     //tạo dl ms
@@ -107,8 +107,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 //                    long newprice = soluong * priceDetal;
 //                    MainActivity.arrayCart.add(new Cart(id,nameDetail,newprice,detailImg,soluong));
 //                }
-//                Intent intent = new Intent(getApplicationContext(),GioHang.class);
-//                startActivity(intent);
 //                //Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
 //            }
 //        });
