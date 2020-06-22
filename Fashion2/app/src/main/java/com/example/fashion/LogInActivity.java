@@ -45,6 +45,8 @@ public class LogInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         anhXa();
+        edtUser.setText("nhantruong1298@gmail.com");
+        edtPassWord.setText("123456");
         controlImage();
         SetUpSignUp();
         SetUpButtonLogin();

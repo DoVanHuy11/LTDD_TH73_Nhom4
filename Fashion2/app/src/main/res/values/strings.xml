@@ -56,4 +56,5 @@
     </string-array>
     //Cac node của firebase
     <string name="IMGVP">ImageViewPager</string>
+    <string name="ItemRecyc">ItemRecycleView</string>
 </resources>

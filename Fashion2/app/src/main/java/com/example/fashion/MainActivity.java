@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -51,31 +53,17 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private ListView listViewMenu;
     private ImageView imgLogo;
-    private RecyclerView listProduct;
+    private RecyclerView recycleViewMain;
 
     //Khai báo firebase
     private DatabaseReference mDatabase;
     //Các node trong firebase
     String IMGVP = "ImageViewPager";
-
-    String[] navtitle ={
-            "SẢN PHẨM", "GIỚI THIỆU", "HƯỚNG DẪN",
-    };
-
-    Integer[] navic = {R.drawable.ic_ao, R.drawable.ic_about, R.drawable.ic_how,};
     ///
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 500; //delay in milliseconds before task is to be executed
     final long PERIOD_MS = 3000;  // time in milliseconds between successive task executions.
-
-
-    Button btnAdd;
-
-    Integer[] imgId={
-            R.drawable.tshirt41, R.drawable.img3, R.drawable.img4,
-            R.drawable.img5, R.drawable.img6, R.drawable.img7,
-    };
 
 
     @Override
@@ -85,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         AnhXa();
         SetActionBar();
-    //    SetListProduct();
         setRecycleView();
         SetViewPager();
         setNavigation();
@@ -109,19 +96,52 @@ public class MainActivity extends AppCompatActivity {
             }
         }, DELAY_MS, PERIOD_MS);
 
-     //   listView = (ListView) findViewById(R.id.listProduct);
-      //  CatchOnItemListView();
 
 
     }
 
     private void setRecycleView() {
-        final ArrayList<ItemRecycleView> arrayList = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        final ArrayList<ItemRecycleView> arrayList = new ArrayList<ItemRecycleView>();
         final ArrayList<String> arrayKeys = new ArrayList<String>();
         final ProductRecycleViewAdapter recycleViewAdapter = new ProductRecycleViewAdapter(this
                 ,arrayList,arrayKeys);
-        mDatabase.child("");
 
+        mDatabase.child("ItemRecycleView").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if(dataSnapshot != null){
+                    ItemRecycleView item = dataSnapshot.getValue(ItemRecycleView.class);
+                    arrayList.add(item);
+                    arrayKeys.add(dataSnapshot.getKey());
+                    recycleViewAdapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        recycleViewMain.setHasFixedSize(true);
+        recycleViewMain.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+        recycleViewMain.setAdapter(recycleViewAdapter);
     }
 
     private void setNavigation(){
@@ -201,14 +221,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void SetListProduct() {
-        ProductAdapter adapter = new ProductAdapter(this ,
-                getResources().getStringArray(R.array.mainTitle),
-                getResources().getStringArray(R.array.subtitle),
-                imgId);
-      //  listProduct.setAdapter(adapter);
-    }
-
     private void SetActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -222,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
-        listProduct = (RecyclerView) findViewById(R.id.listProduct);
+        recycleViewMain = (RecyclerView) findViewById(R.id.recycleViewMain);
         toolbar= findViewById(R.id.toolBar_Main);
         navigationView = findViewById(R.id.navigation_view_main);
         drawerLayout = findViewById(R.id.drawerLayout_Main);
@@ -246,26 +258,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void CatchOnItemListView2() {
-        listView_nav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent[] intent = new Intent[3];
-                intent[0] = new Intent(MainActivity.this, About.class);
-                intent[1] = new Intent(MainActivity.this, howToBuy.class);
-
-                if (position==0)
-                    startActivity(intent[0]);
-
-                else if (position==1)
-                        startActivity(intent[1]);
-
-            }
-        });
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
