@@ -102,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
         imgLogo.setScaleType(ImageView.ScaleType.FIT_XY);
         //
         ArrayList<ItemNavigation> arrayList = new ArrayList<ItemNavigation>();
-        arrayList.add(new ItemNavigation(R.drawable.ic_ao,"Sản phẩm"));
-        arrayList.add(new ItemNavigation(R.drawable.ic_about,"Giới thiệu"));
-        arrayList.add(new ItemNavigation(R.drawable.ic_how,"Hướng dẫn"));
+        arrayList.add(new ItemNavigation(R.drawable.ic_about,"GIỚI THIỆU"));
+        arrayList.add(new ItemNavigation(R.drawable.ic_how,"HƯỚNG DẪN"));
         MenuAdapter menuAdapter = new MenuAdapter(arrayList,this);
         listViewMenu.setAdapter(menuAdapter);
         SetClickITemListViewMenu();
@@ -192,9 +191,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent[] intent = new Intent[3];
-                intent[0] = new Intent(MainActivity.this, Product_Layout.class);
-                intent[1] = new Intent(MainActivity.this, About.class);
-                intent[2] = new Intent(MainActivity.this, howToBuy.class);
+                intent[0] = new Intent(MainActivity.this, About.class);
+                intent[1] = new Intent(MainActivity.this, howToBuy.class);
 
                 if (position==0)
                     startActivity(intent[0]);
@@ -202,8 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 else if (position==1)
                         startActivity(intent[1]);
 
-                else if (position==2)
-                      startActivity(intent[2]);
             }
         });
     }
