@@ -1,7 +1,7 @@
 package com.example.fashion.model;
 
 public class Cart {
-    public String idsp;
+    public int idsp;
     public String tensp;
     public long giasp;
     public String hinhsp;
@@ -18,7 +18,7 @@ public class Cart {
 
     public String Size;
 
-    public Cart(String idsp, String tensp, long giasp, String hinhsp, int soluong,String Size) {
+    public Cart(int idsp, String tensp, long giasp, String hinhsp, int soluong,String Size) {
         this.idsp = idsp;
         this.tensp = tensp;
         this.giasp = giasp;
@@ -27,11 +27,11 @@ public class Cart {
         this.Size = Size;
     }
 
-    public String getIdsp() {
+    public int getIdsp() {
         return idsp;
     }
 
-    public void setIdsp(String idsp) {
+    public void setIdsp(int idsp) {
         this.idsp = idsp;
     }
 
