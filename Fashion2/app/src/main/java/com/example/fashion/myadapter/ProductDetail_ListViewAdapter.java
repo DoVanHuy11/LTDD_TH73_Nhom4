@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.fashion.R;
+import com.example.fashion.interf.StartActiFromListView;
 import com.example.fashion.model.ItemRecycleView;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,15 @@ import java.util.ArrayList;
 public class ProductDetail_ListViewAdapter extends ArrayAdapter<String> {
     private Context context;
     private ArrayList<ItemRecycleView> arrayList;
+    private StartActiFromListView startActiFromListView;
+    private ArrayList<String> arrayKeys;
 
-    public ProductDetail_ListViewAdapter(Context context,ArrayList<ItemRecycleView> arrayList){
+    public ProductDetail_ListViewAdapter(Context context,ArrayList<ItemRecycleView> arrayList,StartActiFromListView startActiFromListView,ArrayList<String> arrayKeys){
         super(context, R.layout.product2);
         this.context = context;
         this.arrayList = arrayList;
+        this.arrayKeys = arrayKeys;
+        this.startActiFromListView = startActiFromListView;
     }
 
     public class ViewHolder{
@@ -40,7 +45,7 @@ public class ProductDetail_ListViewAdapter extends ArrayAdapter<String> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null){
             viewHolder = new ViewHolder();
@@ -55,11 +60,17 @@ public class ProductDetail_ListViewAdapter extends ArrayAdapter<String> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ItemRecycleView itemRecycleView = arrayList.get(position);
+        final ItemRecycleView itemRecycleView = arrayList.get(position);
         viewHolder.tvTitle.setText(itemRecycleView.getName());
         viewHolder.tvSubTitle.setText(itemRecycleView.getPrice()+".000");
         Picasso.get().load(itemRecycleView.getImage())
                 .into(viewHolder.img);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActiFromListView.StartActivity(arrayKeys.get(position),itemRecycleView);
+            }
+        });
         return convertView;
     }
 }

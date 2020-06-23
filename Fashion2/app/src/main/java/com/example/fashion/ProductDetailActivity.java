@@ -22,6 +22,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fashion.interf.StartActiFromListView;
+import com.example.fashion.interf.StartActiFromRecycleView;
 import com.example.fashion.model.Cart;
 import com.example.fashion.model.ItemRecycleView;
 import com.example.fashion.myadapter.ProductDetail_ImageAdapter;
@@ -36,7 +38,7 @@ import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends AppCompatActivity implements StartActiFromListView {
 
     private Spinner spinner;
     Button btnAddCart0,  btnSmall, btnMiddle, btnBig;
@@ -46,9 +48,9 @@ public class ProductDetailActivity extends AppCompatActivity {
     ActionBar actionBar;
     TextView tvProductName,tvProductPrice,tvDecribe;
 
-    ///
+    ///firebase
     private DatabaseReference mDatabase;;
-    ////
+    ////Dữ liệu truyền từ mainActivity
     ItemRecycleView item;
     String key;
     ///
@@ -61,16 +63,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     String description = "";
     int gia = 0;
 
-
-    String [] maintitle ={
-            "nebula1", "nebula2", "nebula3", "nebula4",
-            "nebula5", "nebula6", "nebula7", "nebula8"
-    };
-
-    String [] subtitle ={
-            "Simple description", "Simple description", "Simple description", "Simple description",
-            "Simple description", "Simple description", "Simple description", "Simple description"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,13 +149,15 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void SetListRelatedProducts() {
 
         final ArrayList<ItemRecycleView> arrayList = new ArrayList<ItemRecycleView>();
-        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayList);
+        final ArrayList<String> arrayKeys = new ArrayList<String>();
+        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayList,this,arrayKeys);
         listProductDetail.setAdapter(adapter2);
         mDatabase.child("ProductsRelated").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot != null){
                     ItemRecycleView item = dataSnapshot.getValue(ItemRecycleView.class);
+                    arrayKeys.add(dataSnapshot.getKey());
                     arrayList.add(item);
                     adapter2.notifyDataSetChanged();
                 }
@@ -364,5 +358,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mymenu,menu);
         return true;
+    }
+
+    @Override
+    public void StartActivity(String key, ItemRecycleView item) {
+        Intent intent = new Intent(ProductDetailActivity.this, ProductDetailActivity.class);
+        intent.putExtra("item",item);
+        intent.putExtra("key",key);
+        finish();
+        startActivity(intent);
     }
 }
