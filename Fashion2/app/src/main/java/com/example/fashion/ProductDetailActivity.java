@@ -148,17 +148,17 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
 
     private void SetListRelatedProducts() {
 
-        final ArrayList<ItemRecycleView> arrayList = new ArrayList<ItemRecycleView>();
-        final ArrayList<String> arrayKeys = new ArrayList<String>();
-        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayList,this,arrayKeys);
+        final ArrayList<ItemRecycleView> arrayProductRelated = new ArrayList<ItemRecycleView>();
+        final ArrayList<String> arrayKeys1 = new ArrayList<String>();
+        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayProductRelated,this,arrayKeys1);
         listProductDetail.setAdapter(adapter2);
         mDatabase.child("ProductsRelated").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot != null){
                     ItemRecycleView item = dataSnapshot.getValue(ItemRecycleView.class);
-                    arrayKeys.add(dataSnapshot.getKey());
-                    arrayList.add(item);
+                    arrayKeys1.add(dataSnapshot.getKey());
+                    arrayProductRelated.add(item);
                     adapter2.notifyDataSetChanged();
                 }
             }
