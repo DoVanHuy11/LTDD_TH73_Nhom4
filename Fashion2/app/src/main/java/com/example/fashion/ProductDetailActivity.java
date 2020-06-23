@@ -59,7 +59,7 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
     ///
     TextView txtTen,txtGia,txtMota;
     String id = "";
-    int idsp = 0;
+    //int idsp = 0;
     String nameProd = "";
     String priceDetal = "";
     String detailImg = "";
@@ -111,6 +111,7 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
         tvProductName.setText(item.getName());
         tvProductPrice.setText(item.getPrice().toString()+".000");
         tvDecribe.setText(item.getDescription());
+        id = item.getId();
     }
 
     private void SetViewPager() {
@@ -259,9 +260,10 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
         btnMiddle= (Button) findViewById(R.id.btnProductSizeM);
         btnBig= (Button) findViewById(R.id.btnProductSizeB);
 
-        txtTen = (TextView) findViewById(R.id.txtViewProductName);
-        txtGia = (TextView) findViewById(R.id.txtViewProductPrice);
-        txtMota = (TextView)findViewById(R.id.decribe);
+//        txtTen = (TextView) findViewById(R.id.txtViewProductName);
+//        txtGia = (TextView) findViewById(R.id.txtViewProductPrice);
+//        txtMota = (TextView)findViewById(R.id.decribe);
+
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         tvProductName = findViewById(R.id.txtViewProductName);
         tvProductPrice= findViewById(R.id.txtViewProductPrice);
@@ -281,9 +283,10 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
                 if(Size == ""){
                     Toast.makeText(getApplicationContext(), "Vui lòng chọn size(Nhỏ/Trung/Lớn)!", Toast.LENGTH_SHORT).show();
                 }else {
+                    gia = Integer.parseInt(item.getPrice().toString());
                     int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
                     long newprice = soluong * gia;
-                    MainActivity.arrayCart.add(new Cart(idsp,nameProd,newprice,detailImg,soluong,Size));
+                    MainActivity.arrayCart.add(new Cart(id,item.getName(),newprice,item.getImage(),soluong,Size));
                     Toast.makeText(getApplicationContext(), "Sản phẩm đã được thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
                     //Size = "";
                 }
