@@ -20,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fashion.interf.StartActiFromListView;
@@ -42,7 +45,7 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
 
     private Spinner spinner;
     Button btnAddCart0,  btnSmall, btnMiddle, btnBig;
-    ListView listProductDetail;
+    RecyclerView listProductDetail;
     String Size = "";
     ViewPager mViewPager;
     ActionBar actionBar;
@@ -150,8 +153,7 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
 
         final ArrayList<ItemRecycleView> arrayProductRelated = new ArrayList<ItemRecycleView>();
         final ArrayList<String> arrayKeys1 = new ArrayList<String>();
-        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter(this, arrayProductRelated,this,arrayKeys1);
-        listProductDetail.setAdapter(adapter2);
+        final ProductDetail_ListViewAdapter adapter2 = new ProductDetail_ListViewAdapter( arrayProductRelated,arrayKeys1,this);
         mDatabase.child("ProductsRelated").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -183,6 +185,9 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
 
             }
         });
+        listProductDetail.setHasFixedSize(true);
+        listProductDetail.setLayoutManager(new GridLayoutManager(this,1));
+        listProductDetail.setAdapter(adapter2);
     }
 
     private void SetActionBar() {
@@ -249,7 +254,7 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
         mDatabase = FirebaseDatabase.getInstance().getReference();
         spinner = (Spinner) findViewById(R.id.spinner);
         btnAddCart0 = (Button) findViewById(R.id.btnAddCart0);
-        listProductDetail = (ListView) findViewById(R.id.listRelatedProduct);
+        listProductDetail = (RecyclerView) findViewById(R.id.listRelatedProduct);
         btnSmall= (Button) findViewById(R.id.btnProductSizeS);
         btnMiddle= (Button) findViewById(R.id.btnProductSizeM);
         btnBig= (Button) findViewById(R.id.btnProductSizeB);
@@ -340,18 +345,6 @@ public class ProductDetailActivity extends AppCompatActivity implements StartAct
         });
     }
 
-    private void CatchOnItemListView() {
-        listProductDetail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                for(position = 0; position <= listProductDetail.getCount(); position++){
-                    Intent intent = new Intent(getApplication(), ProductDetailActivity.class);
-                    startActivity(intent);
-                    break;
-                }
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -5,12 +5,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fashion.R;
 import com.example.fashion.interf.StartActiFromListView;
@@ -19,58 +23,54 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ProductDetail_ListViewAdapter extends ArrayAdapter<String> {
-    private Context context;
+public class ProductDetail_ListViewAdapter extends RecyclerView.Adapter<ProductDetail_ListViewAdapter.ViewHolder> {
     private ArrayList<ItemRecycleView> arrayList;
     private StartActiFromListView startActiFromListView;
     private ArrayList<String> arrayKeys;
 
-    public ProductDetail_ListViewAdapter(Context context,ArrayList<ItemRecycleView> arrayList,StartActiFromListView startActiFromListView,ArrayList<String> arrayKeys){
-        super(context, R.layout.product2);
-        this.context = context;
+    public ProductDetail_ListViewAdapter(ArrayList<ItemRecycleView> arrayList, ArrayList<String> arrayKeys, StartActiFromListView startActiFromListView) {
         this.arrayList = arrayList;
-        this.arrayKeys = arrayKeys;
         this.startActiFromListView = startActiFromListView;
-    }
-
-    public class ViewHolder{
-        TextView tvTitle,tvSubTitle;
-        ImageView img;
-    }
-
-    @Override
-    public int getCount() {
-        return arrayList.size();
+        this.arrayKeys = arrayKeys;
     }
 
     @NonNull
     @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final ViewHolder viewHolder;
-        if(convertView == null){
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.product2, null, true);
-            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.productdetail_title);
-            viewHolder.tvSubTitle  = (TextView) convertView.findViewById(R.id.productdetail_subtitle);
-             viewHolder.img = (ImageView) convertView.findViewById(R.id.productdetail_img);
-
-             convertView.setTag(viewHolder);
-        } else{
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        final ItemRecycleView itemRecycleView = arrayList.get(position);
-        viewHolder.tvTitle.setText(itemRecycleView.getName());
-        viewHolder.tvSubTitle.setText(itemRecycleView.getPrice()+".000");
-        Picasso.get().load(itemRecycleView.getImage())
-                .into(viewHolder.img);
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActiFromListView.StartActivity(arrayKeys.get(position),itemRecycleView);
-            }
-        });
-        return convertView;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.product2,null);
+        ViewHolder viewHolder = new ViewHolder(v);
+        return viewHolder;
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final ItemRecycleView itemRecycleView = arrayList.get(position);
+        holder.tvTitle.setText(itemRecycleView.getName());
+        holder.tvSubTitle.setText(itemRecycleView.getPrice()+".000");
+        Picasso.get().load(itemRecycleView.getImage())
+                .into(holder.img);
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView tvTitle,tvSubTitle;
+        ImageView img;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvTitle = (TextView) itemView.findViewById(R.id.productdetail_title);
+            tvSubTitle  = (TextView) itemView.findViewById(R.id.productdetail_subtitle);
+            img = (ImageView) itemView.findViewById(R.id.productdetail_img);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActiFromListView.StartActivity(arrayKeys.get(getAdapterPosition()),arrayList.get(getAdapterPosition()));
+                }
+            });
+        }
+    }
+
 }
