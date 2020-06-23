@@ -77,14 +77,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_detail);
 
-//        Image slider
 
+        //Biến chứa thông tin Product chính của activity
         item = (ItemRecycleView) getIntent().getSerializableExtra("item");
         key = getIntent().getStringExtra("key");
 
         AnhXa();
         SetViewPager();
-        //SetInfoProduct();
+        SetInfoProduct();
         CatchEventSpinner();
         CatchEventButtonClick();
        // CatchOnItemListView();
@@ -92,31 +92,31 @@ public class ProductDetailActivity extends AppCompatActivity {
         SetActionBar();
         //EventButton();
         SetListRelatedProducts();
-        ItemRecycleView itemRecycleView = (ItemRecycleView) getIntent().getSerializableExtra("ItemRecycleView");
-        //int idsp = 0;
-
-        nameProd = itemRecycleView.getName();
-        priceDetal = itemRecycleView.getPrice();
-
-        detailImg = itemRecycleView.getImage();
-        description = itemRecycleView.getDescription();
-        tvProductName.setText(nameProd);
-        tvProductPrice.setText(priceDetal.toString()+ ".000");
-        tvDecribe.setText(description);
-        gia = Integer.parseInt(tvProductPrice.toString());
-        id = itemRecycleView.getId();
-        idsp = Integer.parseInt(id.toString());
-        Picasso.get().load(detailImg).into((Target) mViewPager);
+//        ItemRecycleView itemRecycleView = (ItemRecycleView) getIntent().getSerializableExtra("ItemRecycleView");
+//        //int idsp = 0;
+//
+//        nameProd = itemRecycleView.getName();
+//        priceDetal = itemRecycleView.getPrice();
+//
+//        detailImg = itemRecycleView.getImage();
+//        description = itemRecycleView.getDescription();
+//        tvProductName.setText(nameProd);
+//        tvProductPrice.setText(priceDetal.toString()+ ".000");
+//        tvDecribe.setText(description);
+//        gia = Integer.parseInt(tvProductPrice.toString());
+//        id = itemRecycleView.getId();
+//        idsp = Integer.parseInt(id.toString());
+//        Picasso.get().load(detailImg).into((Target) mViewPager);
 
 
 
     }
-//
-//    private void SetInfoProduct() {
-//        tvProductName.setText(item.getName());
-//        tvProductPrice.setText(item.getPrice().toString()+".000");
-//        tvDecribe.setText(item.getDescription());
-//    }
+
+    private void SetInfoProduct() {
+        tvProductName.setText(item.getName());
+        tvProductPrice.setText(item.getPrice().toString()+".000");
+        tvDecribe.setText(item.getDescription());
+    }
 
     private void SetViewPager() {
         final ArrayList<String> arrayList = new ArrayList<String>();
